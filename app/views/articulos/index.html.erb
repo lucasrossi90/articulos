@@ -1,0 +1,27 @@
+<%= form_tag(articulos_path, remote: true) do %>
+<%= text_field_tag :search, "", class: "search_articulos" %>
+<% end %>
+
+ <table class="table table-striped">
+    <tr>
+      <th>Interno</th>
+	    <th>Codigo</th>
+      <th>Descripcion</th>
+      <th>Rubro</th>
+      <th>Precio</th> 
+    </tr>
+    
+    <tbody class="articulo_tbody_content">
+           <%= render 'index_content' %>
+    </tbody>
+</table>
+
+
+  <script type="text/javascript">
+       $(".search_articulos").keyup(function() {
+           $.ajax({
+              url: '/articulos/search',
+              data: {search: $(this).serialize()}
+           });
+       });
+  </script>

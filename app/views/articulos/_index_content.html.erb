@@ -1,0 +1,9 @@
+   <% @articulos.each do |articulo| %>
+      <tr>
+      <td><%= articulo.interno %></td>
+      <td><%= articulo.codigo %></td>
+      <td><%= articulo.descripcion %></td>
+      <td><%= articulo.rubro %></td>
+      <td><%= articulo.precio %></td>
+      </tr>
+       <% end %>

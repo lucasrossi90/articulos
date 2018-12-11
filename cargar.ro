@@ -1,0 +1,10 @@
+    xlsx = Roo::Spreadsheet.open('./PRODUCTOS.xlsx')
+	xlsx.sheet(0).each do |row|
+        Articulo.create(
+				  interno:row[0],
+                  codigo:row[3], 
+                  descripcion:row[1], 
+				  rubro:row[2],
+				  ubicacion:row[4])
+end
+
