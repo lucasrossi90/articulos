@@ -12,16 +12,18 @@
     </tr>
     
     <tbody class="articulo_tbody_content">
-           <%= render 'index_content' %>
+           <%= render partial: 'index_content' %>
     </tbody>
 </table>
 
 
   <script type="text/javascript">
+
        $(".search_articulos").keyup(function() {
+        
            $.ajax({
               url: '/articulos/search',
-              data: {search: $(this).serialize()}
+              data: {search: $(this).val()}
            });
        });
   </script>

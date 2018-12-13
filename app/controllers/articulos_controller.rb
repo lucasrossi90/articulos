@@ -6,7 +6,7 @@ class ArticulosController < ApplicationController
 
     def search
           @articulos = Articulo.search(params[:search].split("=").last)
-          respond_to :js
+          render partial: 'index_content'
     end
 
   

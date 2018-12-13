@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-	resources :articulos
 	get 'articulos/search', to: 'articulos#search'
+	resources :articulos
+	
 
 
 	
