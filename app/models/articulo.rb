@@ -1,11 +1,28 @@
 class Articulo < ApplicationRecord
 	
-	def self.search(search)
-	  if search
-	        Articulo.where("interno = '#{search}'")
+	def self.rubros
+		["VA-MODELOS ANTERIORES","CJ-JUEGO COJINETES Y AXIAL", "LA-LAMPARAS/FUSIBLES/VARIO", "CM-CANOS X METRO COBRE-POL", "BA-BOMBAS DE AGUA", "FI-FILTROS LANSS-FRAM-LUBE", "PO-QUIMICOS/PEGAMEN/TRAPOS", "PE-REPUESTOS PERKINS", "ZA-REPUESTOS ZANELLO", "TE-TERMIN.ENTREROSCA/NIPLE", "LE-LLAVES LUCES-ARRANQUE-C", "AH-POLY PACK/WIPER/PSP/FLU", "SG-CANOS DE GOMA CURVOS", "AG-ANILLOS SELLOS SINT/SIL", "FB-FAROS Y OPTICAS 'BAIML'", "SI-SILENCIADORES", "CV-CANOS VARIOS/CONEXIONES", "CU-REPUESTOS CUMMINS", "RO-RODAMIENTOS VARIOS", "TS-SOLDAR TORNERIA", "MF-REP.MASSEY FERGUSON", "PC-CANOS PERK-DEUTZ-MF-MAX", "ZB-VARIOS-5921", "CH-ABRAZ-VENTIL-VARIOS", "FE-FILTROS ORIGINALES Y VA", "ZV-BRIDAS-ARMAR-ABROCHAR",  "RU-CRAPOD-CRUCETAS-RODILLO",  "MW-REP MWM-MAXXION",  "AA-FERRETERIA VARIOS",  "PI-PINTURAS TRACTORES/AGRI",  "JV-JUNTAS VARIAS",  "EM-DISCOS/EMBREAG/DESP/FUN", "RC-CILIND-TUBOS-VASTAG-REP", "GR-ACEITE Y GRASAS", "RH-REPUESTOS HIDRAULICOS", "BS-BATERIAS", "HA-REPUESTOS HANOMAG/FIAT", "XO-COLGADOS", "MH-MANGUERAS VARIOS HID-CO",  "BB-BULONES/TUERCAS/ARANDEL",  "IN-INSTRUMENTAL INDICAD/BU", "FO-FILTROS COMB/ACEITE/DES", "FM-FILTROS MANN-RAMA", "AR-PARTES DE MOTOR/VARIOS", "DE-REPUESTOS DEUTZ", "CC-CORREAS A-B-C-10 Y 13", "VT-VALTRA", "RE-RETENES VARIOS", "TO-TOBERAS-INYECCION-TURBO", "FD-FILTROS DARMET", 
+ 		"TC-TERMINALES COMEL",  "CI-CANOS DE INYECCION", "CB-CONEXIONES BRONCE VARIA", "HE-HERRAMIENTAS LLAVES", "AM-AMORTIGUAD CABINA Y ASI","TA-TERMINALES P/ABROCHAR", "EX-EXTREMOS DIRECCION", 
+ 		"CD-CADEANAS AGRICOLAS VARI"]
+ 	end
+ 	
+	def self.search(interno, codigo, descripcion, rubro = nil)
+    
+    scope = Articulo.all
+    
+	  if interno.present?
+	        arts = Articulo.where("interno = '#{interno}'").order('interno')
+	  elsif codigo.present?
+	  		arts = Articulo.where("codigo ILIKE '%#{codigo}%'").order('codigo')
+	  elsif descripcion.present?
+	  		arts = Articulo.where("descripcion ILIKE '#{descripcion}%'").order('descripcion')
+	  elsif rubro.present?
+	  		arts = arts.join(:rubro).where("rubro = '#{rubro}'")
 	  else
-	        Articulo.first(10)
+	        scope.first(10)
 	  end
-    end  
+	  
+	  return arts
+	end  
 
 end
