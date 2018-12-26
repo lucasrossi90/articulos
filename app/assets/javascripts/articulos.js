@@ -1,1 +1,0 @@
-   $(".articulo_tbody_content").html("<%= escape_javascript render(:partial => 'articulos/_index_content', :locals => { :articulos => @articulos }) %>");

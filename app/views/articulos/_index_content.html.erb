@@ -3,7 +3,11 @@
       <td><%= articulo.interno %></td>
       <td><%= articulo.codigo %></td>
       <td><%= articulo.descripcion %></td>
-      <td><%= articulo.rubro %></td>
+      <td><%= articulo.rubro.nombre[0..1] %></td>
       <td><%= articulo.precio %></td>
+      <td><%= articulo.ubicacion %></td>
+      <td>
+      <%= link_to "Modificar", edit_articulo_path(articulo), class: 'btn btn-warning' %>
+      </td>
       </tr>
        <% end %>

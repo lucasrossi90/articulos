@@ -1,31 +1,39 @@
 
 
 <div class="form-group row">
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-2">
         <input class="form-control search_articulos" type="text" placeholder="Buscar por INTERNO" id="interno" autocomplete="off">
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-2">
        <input class="form-control search_articulos" type="text" placeholder="Buscar por CÓDIGO" id="codigo" autocomplete="off">
       </div>
       <div class="form-group col-md-3">
        <input class="form-control search_articulos" type="text" placeholder="Buscar por DESCRIPCIÓN" id="descripcion" autocomplete="off">
       </div>
-     <div class="col-md-3">
-             <%= select_tag :rubro, options_for_select(@rubros), include_blank: 'Filtrar por RUBROS', class: 'form-control' %>
-      </div>
+     <div class="col-md-2">
+             <%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre), include_blank: 'Filtrar por RUBROS', class: 'form-control search_rubro' %>
+     </div>
+      <div class="form-group col-md-2">
+      <%= button_to "Nueva búsqueda", '/articulos', :method => :get, :class => "btn btn-success" %>
+     </div>
+
+    </div>
+
 </div>
 
  <table class="table table-striped">
     <tr>
-      <th>Interno</th>
-	    <th>Codigo</th>
-      <th>Descripcion</th>
-      <th>Rubro</th>
-      <th>Precio</th> 
+      <th style="width: 5%">Interno</th>
+	    <th style="width: 15%">Codigo</th>
+      <th style="width: 35%">Descripcion</th>
+      <th style="width: 10%">Rubro</th>
+      <th style="width: 10%">Precio</th>
+      <th style="width: 10%">Ubicación</th>
+      <th style="width: 10%"></th>
     </tr>
     
     <tbody class="articulo_tbody_content">
-           <%= render partial: 'index_content' %>
+         <%= render partial: 'index_content' %>
     </tbody>
 </table>
 
@@ -39,7 +47,20 @@
               data: {interno: $("#interno").val(),
                      codigo:  $("#codigo").val(),
                      descripcion: $("#descripcion").val()
-                     rubro: $("#rubro").val()}
+                   }
            });
        });
+
+        $(".search_rubro").change(function() {
+              $.ajax({
+              url: '/articulos/search',
+              data: {interno: $("#interno").val(),
+                     codigo:  $("#codigo").val(),
+                     descripcion: $("#descripcion").val(),
+                     rubro: $("#rubro").val()
+                   }
+           });
+       });
+
+
   </script>

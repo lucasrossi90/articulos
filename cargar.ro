@@ -1,10 +1,14 @@
     xlsx = Roo::Spreadsheet.open('./PRODUCTOS.xlsx')
 	xlsx.sheet(0).each do |row|
-        Articulo.create(
-				  interno:row[0],
-                  codigo:row[3], 
-                  descripcion:row[1], 
-				  rubro:row[2],
-				  ubicacion:row[4])
+	i = row[0].rstrip
+	c = row[3].rstrip
+	d = row[1].rstrip
+	u = row[4].rstrip
+	      Articulo.create(
+    			  interno:i,
+                  codigo:c, 
+                  descripcion:d, 
+				  rubro_id: Rubro.where(:nombre => row[2]).ids[0],
+				  ubicacion:u)
 end
 
