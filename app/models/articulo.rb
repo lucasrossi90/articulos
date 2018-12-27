@@ -1,20 +1,29 @@
 class Articulo < ApplicationRecord
 	belongs_to :rubro
+	belongs_to :proveedor
+	attr_accessible :codigo, :descripcion, :rubro_id, :costo, 
+					:ganancia, :precio, :fecha_precio, :proveedor_id
+	
 
-	def self.search(interno, codigo, descripcion, rubro = nil)
+	def self.search(interno, codigo, descripcion, checkCodigo, checkDescripcion, rubro = nil)
     
-    scope = Articulo.all
+    arts = Articulo.all
     
 	  if interno.present?
 	  	    arts = Articulo.where("interno = '#{interno}'")
-	  elsif codigo.present?
+	  end	 
+	  if codigo.present? && checkCodigo == 'true'
+	  		arts = Articulo.where("codigo ILIKE '#%{codigo}%'").order('codigo')
+	  	elsif codigo.present? && checkCodigo == 'false'
 	  		arts = Articulo.where("codigo ILIKE '#{codigo}%'").order('codigo')
-	  elsif descripcion.present?
+	  end
+	  if descripcion.present? && checkDescripcion == 'true'
+	  		arts = Articulo.where("descripcion ILIKE '#%{descripcion}%'").order('descripcion')
+  		  elsif descripcion.present? && checkDescripcion == 'false'
 	  		arts = Articulo.where("descripcion ILIKE '#{descripcion}%'").order('descripcion')
-	  elsif rubro.present?
-	  	    arts = arts.joins(:rubro).where("rubro_id = '#{rubro}'")
-	  else
-	        scope.first(10)
+	  end
+	  if rubro.present?
+	  	    arts = Articulo.where("rubro_id = '#{rubro}'")
 	  end
 	  arts
 	end  

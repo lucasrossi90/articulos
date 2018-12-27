@@ -1,6 +1,6 @@
 
 
-<div class="form-group row">
+<div class="form-group mb-0 row inputRow">
       <div class="form-group col-md-2">
         <input class="form-control search_articulos" type="text" placeholder="Buscar por INTERNO" id="interno" autocomplete="off">
       </div>
@@ -16,9 +16,18 @@
       <div class="form-group col-md-2">
       <%= button_to "Nueva búsqueda", '/articulos', :method => :get, :class => "btn btn-success" %>
      </div>
-
-    </div>
-
+</div>
+<div class="form-group mt-0 mb-0 row checkRow">
+      <div class="form-group col-sm-3">
+      </div>
+      <div class="form-group col-sm-2">
+        <%= check_box_tag 'checkCodigo', value = "1", checked = false, class: 'form-check-input checkCodigo' %>
+        <label>si INCLUYE Código...</label>
+      </div>
+      <div class="form-group col-sm-3">
+        <%= check_box_tag 'checkDescripcion', value = "1", checked = false, class: 'form-check-input checkDescripcion'%>
+         <label>si INCLUYE Descripción...</label>
+      </div> 
 </div>
 
  <table class="table table-striped">
@@ -40,13 +49,16 @@
 
   <script type="text/javascript">
 
-       $(".search_articulos").keyup(function() {
+       $(".search_articulos").change(function() {
         
            $.ajax({
               url: '/articulos/search',
               data: {interno: $("#interno").val(),
                      codigo:  $("#codigo").val(),
-                     descripcion: $("#descripcion").val()
+                     descripcion: $("#descripcion").val(),
+                     rubro: $("#rubro").val(),
+                     checkCodigo: $("#checkCodigo").is(':checked'),
+                     checkDescripcion: $("#checkDescripcion").is(':checked')
                    }
            });
        });

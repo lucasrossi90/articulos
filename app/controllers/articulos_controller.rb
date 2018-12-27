@@ -16,13 +16,16 @@ class ArticulosController < ApplicationController
    end
 
    def search
-   	      @articulos = Articulo.search(params[:interno], params[:codigo], params[:descripcion], params[:rubro])
+   	      @articulos = Articulo.search(params[:interno], params[:codigo], params[:descripcion],
+   	      								 params[:rubro], params[:checkCodigo], params[:checkDescripcion])
    	      respond_to :js
    end
 
    def edit
    		@articulo = Articulo.find(params[:id])
    		@rubros = Rubro.all.order(:nombre)
+   		@proveedores = Proveedor.all.order(:nombre)
+   		
    end
 
   def update
