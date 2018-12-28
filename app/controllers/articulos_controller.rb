@@ -1,7 +1,5 @@
 class ArticulosController < ApplicationController
-   add_breadcrumb "articulos", :articulos_path
-   add_breadcrumb "editar", :edit_articulo_path
-
+	add_breadcrumb "Articulos", :articulos_path
 
    def create
   	@articulo = Article.new(params[:interno], params[:codigo], params[:descripcion], params[:rubro])
@@ -16,7 +14,7 @@ class ArticulosController < ApplicationController
    def index
         @rubros = Rubro.all.order(:nombre)
     	@articulos = Articulo.first(10)
-   	    add_breadcrumb "articulos", articulos_path
+    	@pantalla = ['Articulos']
    end
 
    def search
@@ -29,13 +27,12 @@ class ArticulosController < ApplicationController
    		@articulo = Articulo.find(params[:id])
    		@rubros = Rubro.all.order(:nombre)
    		@proveedores = Proveedor.all.order(:nombre)
-   		
+   	    add_breadcrumb "Editar articulo", edit_articulo_path(@articulo)
    end
 
   def update
     @articulo = Articulo.find(params[:id])
     if @articulo.update(articulo_params)
-
        redirect_to edit_articulo_path(@articulo)
     else
       render 'edit'

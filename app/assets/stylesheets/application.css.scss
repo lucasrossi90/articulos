@@ -19,15 +19,21 @@
 	margin-bottom: 10px;
 }
 
-.active {
-  background-color: #4CAF50;
-  font-style: bold;
+.breadcrumb:last-child {
+	background-color: green;
 }
 
-.display-6 {
-	font-size: 20px;
-	margin-left: 10px;
-	font-style: underline;
+.breadcrumb li:last-child {
+  font-weight: bold;
+ }
+
+.breadcrumb li {
+	color: white;
+}
+
+.breadcrumb {
+	background-color: #343a40;
+	padding: 0px;
 }
 
 .btn-nuevo{
