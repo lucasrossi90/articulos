@@ -1,5 +1,8 @@
 class ArticulosController < ApplicationController
-   
+   add_breadcrumb "articulos", :articulos_path
+   add_breadcrumb "editar", :edit_articulo_path
+
+
    def create
   	@articulo = Article.new(params[:interno], params[:codigo], params[:descripcion], params[:rubro])
  
@@ -13,6 +16,7 @@ class ArticulosController < ApplicationController
    def index
         @rubros = Rubro.all.order(:nombre)
     	@articulos = Articulo.first(10)
+   	    add_breadcrumb "articulos", articulos_path
    end
 
    def search
@@ -30,9 +34,9 @@ class ArticulosController < ApplicationController
 
   def update
     @articulo = Articulo.find(params[:id])
-    if @articulo.update_attributes(articulo_params)
-      flash[:success] = "Articulo actualizado"
-      redirect_to edit_articulo_path(@articulo)
+    if @articulo.update(articulo_params)
+
+       redirect_to edit_articulo_path(@articulo)
     else
       render 'edit'
     end
@@ -41,7 +45,9 @@ class ArticulosController < ApplicationController
    private
 
     def articulo_params
-      params.permit(:codigo, :descripcion, :password, :rubro_id)
+      params.require(:articulo).permit(:codigo, :descripcion,  
+      									:rubro_id, :proveedor_id, :costo, :ganancia,
+      									 :precio, :fecha_precio)
     end
 
 end

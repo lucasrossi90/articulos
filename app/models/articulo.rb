@@ -1,9 +1,7 @@
 class Articulo < ApplicationRecord
 	belongs_to :rubro
 	belongs_to :proveedor
-	attr_accessible :codigo, :descripcion, :rubro_id, :costo, 
-					:ganancia, :precio, :fecha_precio, :proveedor_id
-	
+		
 
 	def self.search(interno, codigo, descripcion, checkCodigo, checkDescripcion, rubro = nil)
     

@@ -13,3 +13,30 @@
  *
  */
  @import "bootstrap";
+
+.navbar {
+	padding: 0px;
+	margin-bottom: 10px;
+}
+
+.active {
+  background-color: #4CAF50;
+  font-style: bold;
+}
+
+.display-6 {
+	font-size: 20px;
+	margin-left: 10px;
+	font-style: underline;
+}
+
+.btn-nuevo{
+    white-space:normal !important;
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+.btn-modificar{
+	background-color: #c0d59f;
+	color:black;
+}

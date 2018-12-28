@@ -1,51 +1,58 @@
-	<h1 class="display-6">Modificar articulo</h1>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <ul class="navbar-nav">
+         <li class="nav-item breadcrumb-item">
+         	<a class="nav-link" href="/articulos">Articulos</a>
+         </li>
+      	 <li class="nav-item breadcrumb-item active aria-current="page"">Editar articulo</li>
+       </ul>
+    </nav>
 
 	<div class="row">
 	  <div class="col-md-8 offset-md-1">
 	    <%= form_for(@articulo) do |a| %>
 
       	<div class="form-control-inline ">
-	      	<%= a.label :Interno %>
+	      	<%= a.label :Interno, :class => "col-sm-2" %>
 	  		<%= a.text_field :interno, :disabled => true, :class => "col-md-2"  %>
   		</div>
   		<div class="form-control-inline">
-			<%= a.label :Codigo%>
+			<%= a.label :Codigo, :class => "col-sm-2" %>
   			<%= a.text_field :codigo, :class => "col-md-3" %>
   		</div>
   		<div class="form-control-inline">
-			<%= a.label :Descripción%>
+			<%= a.label :Descripción, :class => "col-sm-2" %>
   			<%= a.text_field :descripcion, :class => "col-md-6" %>
   		</div>	
   		<div class="form-control-inline">
-			<%= a.label :Rubro%>
-  			<%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre, 
-  			 selected = @articulo.rubro_id), class: 'col-md-6' %>
+			<%= a.label :Rubro, :class => "col-sm-2" %>
+  			<%= a.select :rubro_id, options_from_collection_for_select(@rubros, :id, :nombre, 
+  			 selected = a.object.rubro_id), class: 'col-md-6' %>
 		</div>
 		<div class="form-control-inline text_costo">
-			<%= a.label :Costo%>
+			<%= a.label :Costo, :class => "col-sm-2" %>
   			<%= a.text_field :costo, :class => "col-md-3" %>
 		</div>
 		<div class="form-control-inline text_ganancia">
-			<%= a.label :Ganancia%>
+			<%= a.label :Ganancia, :class => "col-sm-2" %>
   			<%= a.text_field :ganancia, :class => "col-md-3" %>
 		</div>
 		<div class="form-control-inline text_precio">
-			<%= a.label :'Precio IVA incl.'%>
+			<%= a.label :'precio', "Precio IVA incl.", :class => "col-sm-2" %>
   			<%= a.text_field :precio, :class => "col-md-3" %>
 		</div>
 		<div class="form-control-inline">
-			<%= a.label :'Fecha precio'%>
-  			<%= a.text_field :fecha_precio, :class => "col-md-3" %>
+			<%= a.label :'Fecha precio', :class => "col-sm-2" %>
+  			<%= a.text_field :fecha_precio, :class => "col-md-3",  value: @articulo.fecha_precio.strftime("%d-%m-%Y") %>
 		</div>
 		<div class="form-control-inline">
-			<%= a.label :Proveedor%>
-  			<%= select_tag :proveedor, options_from_collection_for_select(@proveedores, :id, :nombre, selected = @articulo.proveedor_id), class: 'col-md-6' %>
+			<%= a.label :Proveedor, :class => "col-sm-2" %>
+  			<%= a.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre, selected = a.object.proveedor_id), class: 'col-md-6' %>
 		</div>
 		<div class="form-control-inline">
-			<%= a.label :'Descuento proveedor'%>
+			<%= a.label :'Descuento proveedor', :class => "col-sm-2" %>
   			<%= a.text_field :'descuento', :class => "col-md-3", :disabled => true %>
 		</div>
-	    <%= a.submit "Guardar cambios", class: "btn btn-sm btn-primary"%>
+	    <%= a.submit "Guardar cambios", class: "btn btn-sm btn-edit btn-success"%>
 		<% end %>
  	</div>
  </div>

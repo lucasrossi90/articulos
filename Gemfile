@@ -22,6 +22,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'bootstrap-datepicker-rails'
+gem "breadcrumbs_on_rails"
+
 
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
