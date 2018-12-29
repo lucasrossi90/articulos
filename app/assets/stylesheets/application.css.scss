@@ -19,22 +19,33 @@
 	margin-bottom: 10px;
 }
 
-.breadcrumb:last-child {
-	background-color: green;
+span {
+	color:white;
+}
+li {
+  float: left;
 }
 
-.breadcrumb li:last-child {
-  font-weight: bold;
- }
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 0px 0px;
+  text-decoration: none;
+}
 
-.breadcrumb li {
+.active {
+	background-color: #4CAF50;
+}
+
+a:hover {
+ 	color: white;
+}
+
+a {
 	color: white;
 }
 
-.breadcrumb {
-	background-color: #343a40;
-	padding: 0px;
-}
 
 .btn-nuevo{
     white-space:normal !important;
@@ -45,4 +56,12 @@
 .btn-modificar{
 	background-color: #c0d59f;
 	color:black;
+}
+
+.btn-volver{
+	background-color: #4CAF50;
+	color:white;
+    white-space:normal !important;
+    word-wrap: break-word;
+    word-break: normal;
 }
