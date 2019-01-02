@@ -1,8 +1,9 @@
 class Articulo < ApplicationRecord
 	belongs_to :rubro
 	belongs_to :proveedor
-		
+	after_initialize :ultimo_interno, if: :new_record?
 
+	
 	def self.search(interno, codigo, descripcion, checkCodigo, checkDescripcion, rubro = nil)
     
     arts = Articulo.all
@@ -23,7 +24,14 @@ class Articulo < ApplicationRecord
 	  if rubro.present?
 	  	    arts = Articulo.where("rubro_id = '#{rubro}'")
 	  end
+	  arts.includes(:rubro)
 	  arts
 	end  
 
+	
+	def ultimo_interno
+		byebug
+		ultimo = Articulo.order(:interno).last.interno
+ 		self.interno = (ultimo.try(:interno) || 0) + 1
+	end
 end

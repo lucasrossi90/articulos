@@ -1,5 +1,10 @@
 class ArticulosController < ApplicationController
 
+   def new
+   		@rubros = Rubro.all.order(:nombre)
+   		@proveedores = Proveedor.all.order(:nombre)
+   end
+
    def create
   	@articulo = Article.new(params[:interno], params[:codigo], params[:descripcion], params[:rubro])
  
@@ -17,9 +22,8 @@ class ArticulosController < ApplicationController
    end
 
    def search
-   	      @articulos = Articulo.search(params[:interno], params[:codigo], params[:descripcion],
-   	      								 params[:rubro], params[:checkCodigo], params[:checkDescripcion])
-   	      respond_to :js
+   	      @articulos = Articulo.search(params[:interno], params[:codigo], params[:descripcion], params[:checkCodigo], params[:checkDescripcion], params[:rubro_id])
+  	      respond_to :js
    end
 
    def edit

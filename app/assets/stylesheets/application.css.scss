@@ -34,8 +34,12 @@ li a {
   text-decoration: none;
 }
 
+.btn-newarticulo hover{
+    background-color: red;
+}
+
 .active {
-	background-color: #4CAF50;
+	background-color: #006644;
 }
 
 a:hover {
@@ -46,15 +50,28 @@ a {
 	color: white;
 }
 
+.btn-edit {
+	background-color: #cc4433;
+	color: white;
+}
+
+
+.btn-newarticulo{
+    white-space:normal;
+    word-wrap: break-word;
+    word-break: normal;
+    background-color: #924040;
+}
 
 .btn-nuevo{
     white-space:normal !important;
     word-wrap: break-word;
     word-break: normal;
+    background-color: #006644;
 }
 
 .btn-modificar{
-	background-color: #c0d59f;
+	background-color: #8b9870;
 	color:black;
 }
 
