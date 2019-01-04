@@ -1,0 +1,10 @@
+  	@articulos = Articulo.all
+
+  	@articulos.each do |a|
+  		if a.fecha_precio.nil?
+  			a.fecha_precio = Time.new('00-00-0000')
+  			a.save!
+  		end
+
+    end
+  		

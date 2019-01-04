@@ -84,5 +84,18 @@
            });
        });
 
+        $(".checkDescripcion").change(function() {
+              $.ajax({
+              url: '/articulos/search',
+              data: {interno: $("#interno").val(),
+                     codigo:  $("#codigo").val(),
+                     descripcion: $("#descripcion").val(),
+                     rubro: $("#rubro").val(),
+                     checkCodigo: $("#checkCodigo").is(':checked'),
+                     checkDescripcion: $("#checkDescripcion").is(':checked')
+                   }
+           });
+       });
+
 
   </script>

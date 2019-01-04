@@ -1,14 +1,50 @@
-    xlsx = Roo::Spreadsheet.open('./PRODUCTOS.xlsx')
+    xlsx = Roo::Spreadsheet.open('./PRODS.xlsx')
 	xlsx.sheet(0).each do |row|
-	i = row[0].rstrip
-	c = row[3].rstrip
-	d = row[1].rstrip
-	u = row[4].rstrip
-	      Articulo.create(
-    			  interno:i,
-                  codigo:c, 
-                  descripcion:d, 
-				  rubro_id: Rubro.where(:nombre => row[2]).ids[0],
-				  ubicacion:u)
+
+	i = row[0]
+	d = row[1]
+	r = row[2]
+	rubronombre = row[3]
+	c = row[4]
+	u = row[5]
+
+	if Rubro.where(:id => r).exists?
+	else
+		Rubro.create(
+			id: r,
+			nombre: rubronombre)
+	end
+
+	if c.nil?
+	c = 'sin código'
+	articulo = Articulo.create!(
+    			  interno: i,
+                  codigo: c, 
+                  descripcion: d, 
+				  rubro_id: r,
+				  ubicacion: u,
+				  proveedor_id: '9')
+	
+	elsif u.nil?
+	u = 'sin ubicación'
+	articulo = Articulo.create!(
+		 interno: i,
+         codigo: c, 
+         descripcion: d, 
+		 rubro_id: r,
+		 ubicacion: u,
+		 proveedor_id: '9')
+
+	else
+	articulo = Articulo.create!(
+		 interno: i,
+         codigo: c, 
+         descripcion: d, 
+		 rubro_id: r,
+		 ubicacion: u,
+		 proveedor_id: '9')
+
+	end
+
 end
 

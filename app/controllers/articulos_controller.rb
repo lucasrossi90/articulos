@@ -1,24 +1,27 @@
 class ArticulosController < ApplicationController
 
    def new
+   		@articulo = Articulo.new
    		@rubros = Rubro.all.order(:nombre)
    		@proveedores = Proveedor.all.order(:nombre)
    end
 
    def create
-  	@articulo = Article.new(params[:interno], params[:codigo], params[:descripcion], params[:rubro])
- 
-  	if @articulo.save
-    	redirect_to @articulo
-  		else
-    	render 'index'
-  		end
-	end
+	@articulo = Articulo.new(articulo_params)
+		if @articulo.fecha_precio.nil?
+			@articulo.fecha_precio = Time.now			
+		end
+
+   	if @articulo.save
+  		redirect_to edit_articulo_path(@articulo)
+  	else
+  		render 'new'
+  	end
+   end
 
    def index
         @rubros = Rubro.all.order(:nombre)
     	@articulos = Articulo.first(10)
-    	@vista = ['Articulos']
    end
 
    def search
@@ -30,8 +33,6 @@ class ArticulosController < ApplicationController
    		@articulo = Articulo.find(params[:id])
    		@rubros = Rubro.all.order(:nombre)
    		@proveedores = Proveedor.all.order(:nombre)
-    	@vista = ['Articulos','Editar articulos']
-
    end
 
   def update
@@ -43,7 +44,7 @@ class ArticulosController < ApplicationController
     end
   end
 
-   private
+  private
 
     def articulo_params
       params.require(:articulo).permit(:codigo, :descripcion,  

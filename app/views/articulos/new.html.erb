@@ -7,7 +7,7 @@
 
 	<div class="row">
 	  <div class="col-md-8 offset-md-1">
-	    <%= form_with scope: :articulo, local: true do |a| %>
+	   <%= form_for @articulo, url: {action: "create"}, html: {class: "nifty_form"} do |a| %>
 
       	<div class="form-control-inline ">
 	      	<%= a.label :Interno, :class => "col-sm-2" %>
@@ -47,9 +47,9 @@
 		</div>
 		<div class="form-control-inline">
 			<%= a.label :'Descuento proveedor', :class => "col-sm-2" %>
-  			<%= a.text_field :'descuento', :class => "col-md-3", :disabled => true %>
+  			<%= a.text_field :'a.object.proveedor.descuento', :class => "col-md-3", :disabled => true %>
 		</div>
-	    <%= a.submit "Guardar cambios", class: "btn btn-sm btn-edit"%>
+	    <%= a.submit "Crear articulo", class: "btn btn-sm btn-edit"%>
 		<% end %>
  	</div>
  </div>

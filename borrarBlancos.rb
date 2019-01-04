@@ -1,8 +1,8 @@
 @articulos = Articulo.all
 @articulos.each do |articulo|
-	i = articulo.interno.delete(' ')
-	c = articulo.codigo.delete(' ')
-	d = articulo.descripcion.delete(' ')
-	u = articulo.ubicacion.delete(' ')
+	i = articulo.interno.rstrip
+	c = articulo.codigo.rstrip
+	d = articulo.descripcion.rstrip
+	u = articulo.ubicacion.rstrip
 	articulo.update(:interno => i, :codigo => c, :descripcion => d, :ubicacion => u)
 	end

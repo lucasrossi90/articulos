@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_26_174506) do
+ActiveRecord::Schema.define(version: 2019_01_03_220533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,15 +22,14 @@ ActiveRecord::Schema.define(version: 2018_12_26_174506) do
     t.string "proveedor_id"
     t.decimal "costo"
     t.date "fecha_precio"
-    t.integer "descuento"
     t.decimal "precio"
     t.text "comentarios"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rubro_id"
-    t.string "codigo_proveedor"
     t.string "ubicacion"
     t.decimal "ganancia"
+    t.index ["interno"], name: "index_articulos_on_interno", unique: true
   end
 
   create_table "proveedors", force: :cascade do |t|
@@ -44,6 +43,7 @@ ActiveRecord::Schema.define(version: 2018_12_26_174506) do
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_rubros_on_id", unique: true
   end
 
 end

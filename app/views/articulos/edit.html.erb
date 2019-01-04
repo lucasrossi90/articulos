@@ -37,19 +37,15 @@
 		</div>
 		<div class="form-control-inline text_precio">
 			<%= a.label :'precio', "Precio IVA incl.", :class => "col-sm-2" %>
-  			<%= a.text_field :precio, :class => "col-md-3" %>
+  			<%= a.text_field :precio, :class => "col-md-4" %>
 		</div>
 		<div class="form-control-inline">
 			<%= a.label :'Fecha precio', :class => "col-sm-2" %>
-  			<%= a.text_field :fecha_precio, :class => "col-md-3",  value: @articulo.fecha_precio.strftime("%d-%m-%Y") %>
+  			<%= a.text_field :fecha_precio, :class => "col-md-3", value: @articulo.fecha_precio.strftime("%d-%m-%Y") %>
 		</div>
 		<div class="form-control-inline">
 			<%= a.label :Proveedor, :class => "col-sm-2" %>
   			<%= a.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre, selected = a.object.proveedor_id), class: 'col-md-6' %>
-		</div>
-		<div class="form-control-inline">
-			<%= a.label :'Descuento proveedor', :class => "col-sm-2" %>
-  			<%= a.text_field :'descuento', :class => "col-md-3", :disabled => true %>
 		</div>
 	    <%= a.submit "Guardar cambios", class: "btn btn-sm btn-edit"%>
 		<% end %>
