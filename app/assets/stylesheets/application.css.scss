@@ -23,6 +23,8 @@
 	padding-left: 90px;
 }
 
+.navbar-nav > li > .dropdown-menu { background-color: grey; }
+
 span {
 	color:white;
 }
@@ -37,6 +39,8 @@ li a {
   padding: 10px 10px;
   text-decoration: none;
 }
+
+
 
 .btn-newarticulo:hover, .btn-newarticulo:active, .btn-newarticulo:focus{
     background-color: red !important;
@@ -61,12 +65,17 @@ a {
 	color: white;
 }
 
+.btnMas {
+    background-color: #006644;
+    border-color: #006644;
+}
 
 .btn-newarticulo{
     white-space:normal;
     word-wrap: break-word;
     word-break: normal;
     background-color: #924040;
+    border-color: #006644;
 }
 
 .btn-nuevo{
@@ -74,6 +83,7 @@ a {
     word-wrap: break-word;
     word-break: normal;
     background-color: #006644;
+    border-color: #006644;
 }
 
 .btn-modificar{

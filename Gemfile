@@ -33,6 +33,7 @@ gem 'therubyracer', :platforms => :ruby
 gem 'autoprefixer-rails', '8.6.5'
 gem "roo", "~> 2.7.0"
 gem 'searchlight'
+gem 'responders', '~> 2.0'
 
 
 # Use Redis adapter to run Action Cable in production

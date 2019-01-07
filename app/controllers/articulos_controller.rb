@@ -25,7 +25,8 @@ class ArticulosController < ApplicationController
    end
 
    def search
-   	      @articulos = Articulo.search(params[:interno], params[:codigo], params[:descripcion], params[:checkCodigo], params[:checkDescripcion], params[:rubro_id])
+   	      @articulos = Articulo.search(params[:interno], params[:codigo], params[:descripcion], 
+   	      				params[:checkCodigo], params[:checkDescripcion], params[:rubro])
   	      respond_to :js
    end
 
@@ -33,6 +34,10 @@ class ArticulosController < ApplicationController
    		@articulo = Articulo.find(params[:id])
    		@rubros = Rubro.all.order(:nombre)
    		@proveedores = Proveedor.all.order(:nombre)
+   		respond_to do |format|
+			format.html
+			format.js
+		end
    end
 
   def update
