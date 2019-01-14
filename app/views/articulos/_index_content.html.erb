@@ -8,7 +8,7 @@
       <td><%= articulo.fecha_precio.strftime("%m-%Y") %></td>
       <td><%= articulo.ubicacion %></td>
       <td>
-      <%= link_to "Modificar", edit_articulo_path(articulo), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-modificar btn-sm'}%>
+      <%= link_to "Modificar", edit_articulo_path(articulo), remote: true, class: 'btn btn-modificar btn-sm'%>
       </td>
       </tr>
    <% end %>

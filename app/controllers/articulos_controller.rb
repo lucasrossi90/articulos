@@ -35,9 +35,9 @@ class ArticulosController < ApplicationController
    		@rubros = Rubro.all.order(:nombre)
    		@proveedores = Proveedor.all.order(:nombre)
    		respond_to do |format|
-			format.html
-			format.js
-		end
+   			format.html
+   			format.js
+   		end
    end
 
   def update
@@ -54,7 +54,7 @@ class ArticulosController < ApplicationController
     def articulo_params
       params.require(:articulo).permit(:codigo, :descripcion,  
       									:rubro_id, :proveedor_id, :costo, :ganancia,
-      									 :precio, :fecha_precio)
+      									 :precio, :fecha_precio, :ubicacion)
     end
 
 end
