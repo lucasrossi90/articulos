@@ -1,0 +1,10 @@
+  	@articulos = Articulo.all
+
+  	@articulos.each do |a|
+  		if a.precio.nil?
+  			a.precio = 0
+  			a.save!
+  		end
+
+    end
+  		

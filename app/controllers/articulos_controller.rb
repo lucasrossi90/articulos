@@ -21,7 +21,7 @@ class ArticulosController < ApplicationController
 
    def index
         @rubros = Rubro.all.order(:nombre)
-    	@articulos = Articulo.first(10)
+    	@articulos = Articulo.order(:interno).first(10)
    end
 
    def search
@@ -43,10 +43,16 @@ class ArticulosController < ApplicationController
   def update
     @articulo = Articulo.find(params[:id])
     if @articulo.update(articulo_params)
-       redirect_to edit_articulo_path(@articulo)
-    else
-      render 'edit'
-    end
+       respond_to :js
+	end
+  end
+
+  def update_fecha_rubro
+  	  @rubros = Rubro.all.order(:nombre)
+   	  respond_to do |format|
+   			format.html
+   			format.js
+   	  end  
   end
 
   private

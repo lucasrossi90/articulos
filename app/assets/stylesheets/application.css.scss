@@ -14,8 +14,49 @@
  */
  @import "bootstrap";
 
-.modal-header .modal-footer {
+.search_articulos, .search_rubro {
+  font-family: 'sans-serif';
+}
+
+.label-check {
+  font-family: 'sans-serif';
+}
+
+.btn {
+  font-family: 'sans-serif';
+}
+
+td .btn {
+  font-family: 'sans-serif';
+}
+
+.index-link {
+  font-family: 'sans-serif';
+}
+
+td  {
+  font-family: 'segoe ui';
+}
+
+th {
+  font-family: 'segoe ui';
+}
+
+.modal-header, .modal-footer {
   background-color:  #ebebe0;
+}
+
+.modal-header {
+  font-family: 'segoe ui';
+  font-weight: bold;
+}
+
+.modal-body label {
+  font-family: 'segoe ui';
+}
+
+.modal-body input, select {
+  font-family: 'segoe ui';
 }
 
 .navbar {
@@ -44,20 +85,23 @@ li a {
   text-decoration: none;
 }
 
-
-
 .btn-newarticulo:hover, .btn-newarticulo:active, .btn-newarticulo:focus{
     background-color: red !important;
     border-color: red !important;
 }
 
+.btn-modificar:hover {
+ background-color: blue !important;
+ border-color: blue !important;
+ color: white;
+}
+
+.index-link:hover {
+  color: white !important;
+}
 
 .active {
 	background-color: #006644;
-}
-
-a:hover {
-  font-weight: bold;
 }
 
 a {
@@ -69,9 +113,16 @@ a {
 	color: white;
 }
 
-.btnMas {
-    background-color: #006644;
-    border-color: #006644;
+.btn-mas-herramientas:hover {
+    background-color: green !important;
+    border-color: green !important;
+    color: white;
+}
+
+.btn-mas-herramientas {
+    background-color:  #006644;
+    border-color:  #006644;
+    color:white;
 }
 
 .btn-newarticulo{
@@ -79,10 +130,22 @@ a {
     word-wrap: break-word;
     word-break: normal;
     background-color: #924040;
-    border-color: #006644;
+    border-color: #924040;
 }
 
-.btn-nuevo{
+.inicio-nav:hover {
+  background-color: green;
+    border-color: green;
+    color:white;
+}
+
+.btn-nueva-busqueda:hover {
+    background-color: green;
+    border-color: green;
+    color:white;
+}
+
+.btn-nueva-busqueda{
     white-space:normal !important;
     word-wrap: break-word;
     word-break: normal;
@@ -90,15 +153,66 @@ a {
     border-color: #006644;
 }
 
+
 .btn-modificar{
-	background-color: #ecdbdb;
-	color:black;
+	background-color: #354e85;
+	color:white;
+}
+
+.btn-volver:hover{
+  font-weight: bold;
 }
 
 .btn-volver{
-	background-color: #4CAF50;
+	background-color: #006644;
 	color:white;
   white-space:normal !important;
   word-wrap: break-word;
   word-break: normal;
+}
+
+.row-acciones {
+    text-align: center;
+}
+
+.btn-mas {
+  width: 100;
+}
+
+.btn-mas-rubro:hover {
+ background-color: blue !important;
+ border-color: blue !important;
+ color: white;
+}
+
+.btn-mas-rubro {
+    white-space:normal !important;
+    word-wrap: break-word;
+    word-break: normal;
+    background-color: #354e85;
+    border-color:  #354e85;
+    color:white;
+  }
+
+.btn-mas-proveedor:hover {
+ background-color: red !important;
+ border-color: red !important;
+ color: white;
+}
+
+.btn-mas-proveedor {
+    white-space:normal !important;
+    word-wrap: break-word;
+    word-break: normal;
+    background-color: #924040;
+    border-color: #924040;
+    color:white;
+}
+
+.btn-mas-proveedor, .btn-mas-rubro {
+  width: 100%;
+}
+
+.mas-acciones {
+  margin-top: 20px;
 }

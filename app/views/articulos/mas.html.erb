@@ -1,0 +1,86 @@
+  <nav  class="navbar navbar navbar-dark bg-dark">    
+      		<li class="active">
+          		<a style="pointer-events: none" href="">Gestión de rubros y proveedores</a>
+      		</li>
+ 			<%= button_to "Volver a la búsqueda", '/articulos', :method => :get, :class => "btn btn-md btn-volver" %>
+  </nav>
+
+<div class="row row-acciones">
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-3">
+		Acciones sobre RUBROS
+	</div>
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-3">
+		Acciones sobre PROVEEDORES
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+
+<div class="row mas-acciones">
+</div>
+<div class="row">
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-2">
+		<%= link_to "Actualizar fecha de los precios de un RUBRO",  'update_fecha_rubro', remote: true, class: 'btn btn-mas-rubro btn-sm'%>
+	</div>
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-2">
+		<%= link_to "Modificar PROVEEDOR",  'update_fecha_rubro', remote: true, class: 'btn btn-mas-proveedor btn-sm'%>
+	</div>
+</div>
+
+<div class="row mas-acciones">
+</div>
+
+<div class="row">
+	<div class="col-sm-2">
+	</div>
+
+	<div class="col-md-2">
+		<%= link_to "Remarcar los precios de un RUBRO",  'update_fecha_rubro', remote: true, class: 'btn btn-mas-rubro btn-sm'%>
+	</div>
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-2">
+		<%= link_to "Agregar PROVEEDOR",  'update_fecha_rubro', remote: true, class: 'btn btn-mas-proveedor btn-sm'%>
+	</div>
+</div>
+
+
+<div class="row mas-acciones">
+	<div class="col-sm-2">
+	</div>
+
+	<div class="col-md-2">
+		<%= link_to "Modificar RUBRO",  'update_fecha_rubro', remote: true, class: 'btn btn-mas-rubro btn-sm'%>
+	</div>
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-2">
+		<%= link_to "Eliminar PROVEEDOR",  'update_fecha_rubro', remote: true, class: 'btn btn-mas-proveedor btn-sm'%>
+	</div>
+</div>
+
+<div class="row mas-acciones">
+	<div class="col-sm-2">
+	</div>
+
+	<div class="col-md-2">
+		<%= link_to "Agregar RUBRO",  'update_fecha_rubro', remote: true, class: 'btn btn-mas-rubro btn-sm'%>
+	</div>
+</div>
+
+<div class="row mas-acciones">
+	<div class="col-sm-2">
+	</div>
+
+	<div class="col-md-2">
+		<%= link_to "Eliminar RUBRO",  'update_fecha_rubro', remote: true, class: 'btn btn-mas-rubro btn-sm'%>
+	</div>
+</div>

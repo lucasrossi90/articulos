@@ -45,10 +45,6 @@
 			<%= a.label :Proveedor, :class => "col-sm-2" %>
   			<%= a.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), class: 'col-md-6' %>
 		</div>
-		<div class="form-control-inline">
-			<%= a.label :'Descuento proveedor', :class => "col-sm-2" %>
-  			<%= a.text_field :'a.object.proveedor.descuento', :class => "col-md-3", :disabled => true %>
-		</div>
 	    <%= a.submit "Crear articulo", class: "btn btn-sm btn-edit"%>
 		<% end %>
  	</div>

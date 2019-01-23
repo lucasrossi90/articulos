@@ -1,1 +1,31 @@
 $('<%= j render "edit", title: "Editar articulo" %>').modal();
+
+
+$(".text_costo").keyup(function() {
+	$("#articulo_precio").val($("#articulo_costo").val() * ($("#articulo_ganancia").val()/100 + 1) * 1.21)
+	})
+
+
+$(".text_ganancia").keyup(function() {
+    $("#articulo_precio").val($("#articulo_costo").val() * ($("#articulo_ganancia").val()/100 + 1) * 1.21)
+	})
+
+
+$(".button-hoy").click(function() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if (dd < 10) {
+	  dd = '0' + dd;
+	}
+
+	if (mm < 10) {
+	  mm = '0' + mm;
+	}
+
+	today = dd + '-' + mm + '-' + yyyy;
+
+	$("#articulo_fecha_precio").val(today)
+})

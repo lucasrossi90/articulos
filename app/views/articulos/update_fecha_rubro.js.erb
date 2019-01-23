@@ -1,0 +1,23 @@
+$('<%= j render "update_fecha_rubro", title: "Editar la fecha del precio de todos los articulos de un rubro" %>').modal();
+
+
+$(".button-hoy").click(function() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if (dd < 10) {
+	  dd = '0' + dd;
+	}
+
+	if (mm < 10) {
+	  mm = '0' + mm;
+	}
+
+	today = dd + '-' + mm + '-' + yyyy;
+
+	$("#articulo_fecha_precio").val(today)
+})
+
+

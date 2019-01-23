@@ -1,10 +1,10 @@
    <% @articulos.each do |articulo| %>
-      <tr>
+      <tr class="row-<%=articulo.interno%>">
       <td><%= articulo.interno %></td>
       <td><%= articulo.codigo %></td>
       <td><%= articulo.descripcion %></td>
       <td><%= articulo.rubro.nombre[0..1] %></td>
-      <td><%= articulo.precio %></td>
+      <td><%= articulo.precio.round(2) %></td>
       <td><%= articulo.fecha_precio.strftime("%m-%Y") %></td>
       <td><%= articulo.ubicacion %></td>
       <td>
