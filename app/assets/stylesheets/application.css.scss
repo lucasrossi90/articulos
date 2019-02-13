@@ -131,6 +131,7 @@ a {
     word-break: normal;
     background-color: #924040;
     border-color: #924040;
+    outline: none;
 }
 
 .inicio-nav:hover {
@@ -209,10 +210,14 @@ a {
     color:white;
 }
 
-.btn-mas-proveedor, .btn-mas-rubro {
-  width: 100%;
+.dropdown-item:hover {
+     background-color: lightgreen !important;
+    border-color: lightgreen !important;
 }
 
-.mas-acciones {
-  margin-top: 20px;
+.table-rubros {
+  border-radius: 5px;
+    width: 60%;
+    margin: 0px auto;
+    float: none;
 }

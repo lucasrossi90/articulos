@@ -1,0 +1,65 @@
+<div id="edit-modal" class="modal fade">
+	<div class="modal-dialog modal-lg">
+	<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="modal-title">Nuevo articulo</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	
+	<div>	
+	   <%= form_for @articulo, url: {action: "create"}, html: {class: "nifty_form"} do |a| %>
+	    <div class="modal-body">
+
+	      	<div class="form-control-inline ">
+		      	<%= a.label :Interno, :class => "col-sm-2" %>
+		  		<%= a.text_field :interno, :disabled => true, :class => "col-md-2"  %>
+	  		</div>
+	  		<div class="form-control-inline">
+				<%= a.label :Codigo, :class => "col-sm-2" %>
+	  			<%= a.text_field :codigo, :class => "col-md-3" %>
+	  		</div>
+	  		<div class="form-control-inline">
+				<%= a.label :Descripción, :class => "col-sm-2" %>
+	  			<%= a.text_field :descripcion, :class => "col-md-6" %>
+	  		</div>	
+	  		<div class="form-control-inline">
+				<%= a.label :Rubro, :class => "col-sm-2" %>
+	  			<%= a.select :rubro_id, options_from_collection_for_select(@rubros, :id, :nombre), class: 'col-md-6' %>
+			</div>
+			<div class="form-control-inline text_costo">
+				<%= a.label :Costo, :class => "col-sm-2" %>
+	  			<%= a.text_field :costo, :class => "col-md-3" %>
+			</div>
+			<div class="form-control-inline text_ganancia">
+				<%= a.label :Ganancia, :class => "col-sm-2" %>
+	  			<%= a.text_field :ganancia, :class => "col-md-3" %>
+			</div>
+			<div class="form-control-inline text_precio">
+				<%= a.label :'precio', "Precio IVA incl.", :class => "col-sm-2" %>
+	  			<%= a.text_field :precio, :class => "col-md-3" %>
+			</div>
+			<div class="form-control-inline">
+				<%= a.label :'Fecha precio', :class => "col-sm-2" %>
+	  			<%= a.text_field :fecha_precio, :class => "col-md-3" %>
+	  			<%= button_tag :Hoy, :type => "button", :class => "col-md-1 btn button-hoy btn-sm btn-success"%>
+			</div>
+			<div class="form-control-inline">
+				<%= a.label :Proveedor, :class => "col-sm-2" %>
+	  			<%= a.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), class: 'col-md-6' %>
+			</div>
+		</div>
+
+	    <div class="modal-footer">
+	    	<%= a.submit "Guardar cambios", class: "btn btn-edit"%>
+	    	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+		</div>
+				
+		<% end %>
+		</div>
+ 	   </div>
+
+ </div>
+</div>
+</div>

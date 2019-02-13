@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 	get 'articulos/search', to: 'articulos#search'
+	get 'rubros/search', to: 'rubros#search'
 	get 'articulos/mas', to: 'articulos#mas'
-	get 'articulos/update_fecha_rubro', to: 'articulos#update_fecha_rubro'
+	get 'rubros/update_fecha_rubro', to: 'rubros#update_fecha_rubro'
 	resources :articulos
 	resources :rubros
+	resources :proveedores
 	
 
 

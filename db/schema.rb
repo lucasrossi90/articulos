@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_03_220533) do
+ActiveRecord::Schema.define(version: 2019_02_08_150156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articulos", force: :cascade do |t|
-    t.string "interno"
+    t.integer "interno"
     t.string "codigo"
     t.string "descripcion"
     t.string "proveedor_id"

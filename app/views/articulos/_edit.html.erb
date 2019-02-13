@@ -29,17 +29,17 @@
 			  			<%= a.select :rubro_id, options_from_collection_for_select(@rubros, :id, :nombre, 
 			  			 selected = a.object.rubro_id), class: 'col-md-6' %>
 					</div>
-					<div class="form-control-inline ">
+					<div class="form-control-inline">
 						<%= a.label :Costo, :class => "col-sm-2" %>
-			  			<%= a.text_field :costo, :class => "col-md-3 text_costo" %>
+			  			<%= a.text_field :costo, :class => "col-md-3 " %>
 					</div>
-					<div class="form-control-inline text_ganancia">
+					<div class="form-control-inline">
 						<%= a.label :Ganancia, :class => "col-sm-2" %>
 			  			<%= a.text_field :ganancia, :class => "col-md-3" %>
 					</div>
-					<div class="form-control-inline text_precio">
+					<div class="form-control-inline">
 						<%= a.label :'precio', "Precio IVA incl.", :class => "col-sm-2" %>
-			  			<%= a.text_field :precio, :class => "col-md-4" %>
+			  			<%= a.text_field :precio, :class => "col-md-4 " %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :'Fecha precio', :class => "col-sm-2" %>
@@ -54,11 +54,12 @@
 						<%= a.label :Ubicacion, :class => "col-sm-2" %>
 			  			<%= a.text_field :ubicacion, class: 'col-md-2' %>
 					</div>
-					</div>
-				    <div class="modal-footer">
+				</div>
+
+				<div class="modal-footer">
 				    	<%= a.submit "Guardar cambios", class: "btn btn-edit"%>
 				    	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					</div>
+				</div>
 				
 				<% end %>
 			 </div>

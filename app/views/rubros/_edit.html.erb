@@ -1,0 +1,32 @@
+   <div id="edit-modal" class="modal fade">
+  		<div class="modal-dialog modal-md">
+    	 <div class="modal-content">
+    	  <div class="modal-header">
+       		<h5 class="modal-title">Modificar rubro</h5>
+        		<button type="button" class="close" data-dismiss="modal" aria-label="close">
+          		<span aria-hidden="true">&times;</span>
+        	</button>
+	      </div>
+			<div>
+			    <%= form_for @rubro, remote: true do |r| %>
+			    <div class="modal-body">
+			    	<div class="form-control-inline">
+						<%= r.label :'Número',  :class => "col-sm-2" %>
+			  			<%= r.text_field :id, :disabled => true, :class => "col-md-3"%>
+			 		</div>
+					<div class="form-control-inline">
+						<%= r.label :'Nombre', :class => "col-sm-2" %>
+			  			<%= r.text_field :nombre, :class => "col-md-7"%>
+			 		</div>
+			 	</div>
+
+				    <div class="modal-footer">
+				    	<%= r.submit "Guardar cambios", class: "btn btn-edit"%>
+				    	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					</div>
+				
+				<% end %>
+
+		 	</div>
+		 </div>
+     </div>

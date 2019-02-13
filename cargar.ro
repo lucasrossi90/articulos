@@ -1,6 +1,7 @@
     xlsx = Roo::Spreadsheet.open('./PRODS.xlsx')
 	xlsx.sheet(0).each do |row|
 
+	rowID = row
 	i = row[0]
 	d = row[1]
 	r = row[2]
@@ -10,7 +11,7 @@
 
 	if Rubro.where(:id => r).exists?
 	else
-		Rubro.create(
+		Rubro.create!(
 			id: r,
 			nombre: rubronombre)
 	end
@@ -24,6 +25,7 @@
 				  rubro_id: r,
 				  ubicacion: u,
 				  proveedor_id: '9')
+	next
 	
 	elsif u.nil?
 	u = 'sin ubicación'
@@ -34,6 +36,7 @@
 		 rubro_id: r,
 		 ubicacion: u,
 		 proveedor_id: '9')
+	next
 
 	else
 	articulo = Articulo.create!(

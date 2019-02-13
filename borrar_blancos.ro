@@ -1,7 +1,6 @@
   	@articulos = Articulo.all
 
   	@articulos.each do |a|
-  		a.interno = a.interno.rstrip
   		a.codigo = a.codigo.rstrip
   		a.descripcion = a.descripcion.rstrip
   		a.ubicacion = a.ubicacion.rstrip

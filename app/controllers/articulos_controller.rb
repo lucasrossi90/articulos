@@ -1,13 +1,18 @@
 class ArticulosController < ApplicationController
 
    def new
+      nuevoInterno = buscarUltimoInterno
    		@articulo = Articulo.new
    		@rubros = Rubro.all.order(:nombre)
    		@proveedores = Proveedor.all.order(:nombre)
+      respond_to do |format|
+        format.html
+        format.js
+      end
    end
 
    def create
-	@articulo = Articulo.new(articulo_params)
+	   @articulo = Articulo.new(articulo_params)
 		if @articulo.fecha_precio.nil?
 			@articulo.fecha_precio = Time.now			
 		end
@@ -36,7 +41,7 @@ class ArticulosController < ApplicationController
    		@proveedores = Proveedor.all.order(:nombre)
    		respond_to do |format|
    			format.html
-   			format.js
+   			format.js { render layout: false }
    		end
    end
 
@@ -44,15 +49,12 @@ class ArticulosController < ApplicationController
     @articulo = Articulo.find(params[:id])
     if @articulo.update(articulo_params)
        respond_to :js
-	end
+	  end
   end
 
-  def update_fecha_rubro
-  	  @rubros = Rubro.all.order(:nombre)
-   	  respond_to do |format|
-   			format.html
-   			format.js
-   	  end  
+  def buscarUltimoInterno
+      ultimo = Articulo.all.order(:interno).last.interno
+      
   end
 
   private
