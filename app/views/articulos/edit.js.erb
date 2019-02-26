@@ -27,3 +27,15 @@ $(".button-hoy").click(function() {
 
 	$("#articulo_fecha_precio").val(today)
 })
+
+
+<% if @articulo.errors.empty? %>
+  $('#edit-modal').foundation('close');
+  
+<% end %>
+
+
+ $('.btn-edit').click(function() {
+ 	
+       toastr.success('Click Button');
+    });

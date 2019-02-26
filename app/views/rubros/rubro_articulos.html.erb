@@ -1,0 +1,70 @@
+  <nav class="navbar navbar navbar-dark bg-dark">    
+        <li class="active inicio-nav" >
+          <a class='index-link' href="/rubro_articulos">Articulos por RUBRO</a>
+        </li>
+  </ol>
+
+  <div class="btn-group">
+  <button type="button" class="btn btn-mas-herramientas btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Más herramientas
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+    <a class="dropdown-item" href="/articulos">Búsqueda de ARTICULOS</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/rubros">Gestión de RUBROS</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/proveedores">Gestión de PROVEEDORES</a>
+  </div>
+</div>
+</nav>
+
+
+
+  <div class="row form-group">
+       <div class="col-md-1"></div>
+       <label class="rubro-articulos">Seleccionar el RUBRO  </label>
+       <%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre), include_blank: 'Seleccione el RUBRO a mostrar', class: 'form-control col-md-4 search_rubro' %>
+       <div class="col-sm-1"></div>
+       <label class="rubro-articulos">Ordenado por</label>
+       <%=select_tag "sorting", "<option>interno</option><option>codigo</option><option>descripcion</option>".html_safe, include_blank: 'ordenado por...', class: 'form-control col-md-2 sort_search_rubro' %>
+ </div>
+ <table class="table table-striped">
+    <tr class=>
+      <th style="width: 5%">Interno</th>
+	    <th style="width: 15%">Codigo</th>
+      <th style="width: 38%">Descripción</th>
+      <th style="width: 6%">Rubro</th>
+      <th style="width: 9%">Precio</th>
+      <th style="width: 9%">Fecha $</th>
+      <th style="width: 7%">Ubicación</th>
+      <th style="width: 6%"></th>
+    </tr>
+    
+    <tbody class="rubro_articulos_content">
+         <%= render partial: 'rubro_articulos_content' %>
+    </tbody>
+</table>
+
+
+  <script type="text/javascript">
+
+       $(".search_rubro").change(function() {
+        
+           $.ajax({
+              url: '/rubros/search_articulos',
+              data: {rubro_elegido: $("#rubro").val(),
+                     orden: $("#sorting").val()
+                   }
+           });
+       });
+
+      $(".sort_search_rubro").change(function() {
+        
+           $.ajax({
+              url: '/rubros/search_articulos',
+              data: {rubro_elegido: $("#rubro").val(),
+                     orden: $("#sorting").val()
+                   }
+           });
+       });
+
+  </script>

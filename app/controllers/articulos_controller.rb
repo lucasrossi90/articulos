@@ -3,6 +3,7 @@ class ArticulosController < ApplicationController
    def new
       nuevoInterno = buscarUltimoInterno
    		@articulo = Articulo.new
+      @articulo.interno = nuevoInterno
    		@rubros = Rubro.all.order(:nombre)
    		@proveedores = Proveedor.all.order(:nombre)
       respond_to do |format|
@@ -12,15 +13,28 @@ class ArticulosController < ApplicationController
    end
 
    def create
+   byebug
 	   @articulo = Articulo.new(articulo_params)
-		if @articulo.fecha_precio.nil?
-			@articulo.fecha_precio = Time.now			
-		end
+		if @articulo.fecha_precio.blank?
+			@articulo.fecha_precio = Time.now
+    end
+    if @articulo.precio.blank?
+      @articulo.precio = 0
+    end
+    if @articulo.costo.blank?
+      @articulo.costo = 0
+    end
+    if @articulo.ganancia.blank?
+      @articulo.ganancia = 0
+    end
+    if @articulo.ubicacion.blank?
+      @articulo.ubicacion = "SIN UBICACION"
+    end
 
    	if @articulo.save
-  		redirect_to edit_articulo_path(@articulo)
+  		redirect_to articulos_path
   	else
-  		render 'new'
+  		render 'index'
   	end
    end
 
@@ -53,14 +67,14 @@ class ArticulosController < ApplicationController
   end
 
   def buscarUltimoInterno
-      ultimo = Articulo.all.order(:interno).last.interno
-      
+      ultimo = Articulo.order(:interno).last.interno
+      nuevoInterno = ultimo + 1      
   end
 
   private
 
     def articulo_params
-      params.require(:articulo).permit(:codigo, :descripcion,  
+      params.require(:articulo).permit(:interno, :codigo, :descripcion,  
       									:rubro_id, :proveedor_id, :costo, :ganancia,
       									 :precio, :fecha_precio, :ubicacion)
     end

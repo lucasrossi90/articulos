@@ -2,12 +2,11 @@ $('<%= j render "new", title: "Nuevo articulo" %>').modal();
 
 $(".text_costo").keyup(function() {
 	$("#articulo_precio").val($("#articulo_costo").val() * ($("#articulo_ganancia").val()/100 + 1) * 1.21)
-	})
+	});
 
-debugger
 $(".text_ganancia").keyup(function() {
     $("#articulo_precio").val($("#articulo_costo").val() * ($("#articulo_ganancia").val()/100 + 1) * 1.21)
-	})
+	});
 
 $(".button-hoy").click(function() {
 
@@ -27,4 +26,4 @@ $(".button-hoy").click(function() {
 	today = dd + '-' + mm + '-' + yyyy;
 
 	$("#articulo_fecha_precio").val(today)
-})
+});

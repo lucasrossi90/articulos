@@ -24,7 +24,7 @@ class RubrosController < ApplicationController
 	  end
   	end
 
-    def update_fecha_rubro
+    def edit_fecha_rubro
   	  @rubros = Rubro.all.order(:nombre)
    	  respond_to do |format|
    			format.html
@@ -32,6 +32,23 @@ class RubrosController < ApplicationController
    	  end  
   	end
 
+  	def edit_precio_rubro
+  	  @rubros = Rubro.all.order(:nombre)
+   	  respond_to do |format|
+   			format.html
+   			format.js
+   	  end  
+  	end
+
+  	def rubro_articulos
+  		@rubros = Rubro.all.order(:nombre)
+  		@articulos = Articulo.order(:interno).first(5)
+  	end
+
+  	def search_articulos
+  		@articulos = Rubro.search_articulos(params[:rubro_elegido], params[:orden])
+  		respond_to :js
+  	end
 
   	private
   	def rubro_params

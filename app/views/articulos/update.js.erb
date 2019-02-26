@@ -1,1 +1,6 @@
-$(".row-<%=@articulo.interno%>").html("<%= escape_javascript render(:partial => 'articulos/update', :locals => { :articulo => @rubro }) %>");
+$(".row-<%=@articulo.interno%>").html("<%= escape_javascript render(:partial => 'articulos/update', :locals => { :articulo => @articulo }) %>");
+
+ $('.btn-edit').click(function() {
+ 	  toastr.success('Articulo modificado');
+ 	  $('#edit-modal').modal('hide');
+    });

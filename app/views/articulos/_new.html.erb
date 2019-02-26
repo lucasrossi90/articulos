@@ -14,7 +14,7 @@
 
 	      	<div class="form-control-inline ">
 		      	<%= a.label :Interno, :class => "col-sm-2" %>
-		  		<%= a.text_field :interno, :disabled => true, :class => "col-md-2"  %>
+		  		<%= a.text_field :interno, :readonly => true, :class => "col-md-2"  %>
 	  		</div>
 	  		<div class="form-control-inline">
 				<%= a.label :Codigo, :class => "col-sm-2" %>
@@ -26,7 +26,7 @@
 	  		</div>	
 	  		<div class="form-control-inline">
 				<%= a.label :Rubro, :class => "col-sm-2" %>
-	  			<%= a.select :rubro_id, options_from_collection_for_select(@rubros, :id, :nombre), class: 'col-md-6' %>
+	  			<%= a.select :rubro_id, options_from_collection_for_select(@rubros, :id, :nombre, selected = 119), class: 'col-md-6' %>
 			</div>
 			<div class="form-control-inline text_costo">
 				<%= a.label :Costo, :class => "col-sm-2" %>
@@ -40,6 +40,10 @@
 				<%= a.label :'precio', "Precio IVA incl.", :class => "col-sm-2" %>
 	  			<%= a.text_field :precio, :class => "col-md-3" %>
 			</div>
+			<div class="form-control-inline text_precio">
+				<%= a.label :'ubicacion', "Ubicación", :class => "col-sm-2" %>
+	  			<%= a.text_field :ubicacion, :class => "col-md-3" %>
+			</div>
 			<div class="form-control-inline">
 				<%= a.label :'Fecha precio', :class => "col-sm-2" %>
 	  			<%= a.text_field :fecha_precio, :class => "col-md-3" %>
@@ -47,12 +51,12 @@
 			</div>
 			<div class="form-control-inline">
 				<%= a.label :Proveedor, :class => "col-sm-2" %>
-	  			<%= a.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), class: 'col-md-6' %>
+	  			<%= a.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre, selected = 11), class: 'col-md-6' %>
 			</div>
 		</div>
 
 	    <div class="modal-footer">
-	    	<%= a.submit "Guardar cambios", class: "btn btn-edit"%>
+	    	<%= a.submit "Crear nuevo articulo", class: "btn btn-create btn-edit"%>
 	    	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 		</div>
 				

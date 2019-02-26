@@ -1,0 +1,20 @@
+ultimo = Articulo.order(:interno).last.interno
+
+for i in 0..ultimo do
+	if Articulo.where(:interno => i).exists?
+	next
+	else
+		Articulo.create(
+			:interno => i,
+			:codigo => 'LIBRE',
+			:descripcion => 'LIBRE',
+			:rubro_id => '00',
+			:proveedor_id => '00',
+			:costo => '00',
+			:ganancia => '00',
+			:precio => '00',
+			:fecha_precio => '00-00-0000',
+			:ubicacion => 'SIN UBICACION')
+	end
+	next
+end
