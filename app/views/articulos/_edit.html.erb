@@ -31,19 +31,19 @@
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :Costo, :class => "col-sm-2" %>
-			  			<%= a.text_field :costo, :class => "col-md-3 " %>
+			  			<%= a.number_field :costo, :class => "col-md-3 " %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :Ganancia, :class => "col-sm-2" %>
-			  			<%= a.text_field :ganancia, :class => "col-md-3" %>
+			  			<%= a.number_field :ganancia, :class => "col-md-3" %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :'precio', "Precio IVA incl.", :class => "col-sm-2" %>
-			  			<%= a.text_field :precio, :class => "col-md-4 " %>
+			  			<%= a.number_field :precio, :class => "col-md-4 " %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :'Fecha precio', :class => "col-sm-2" %>
-			  			<%= a.text_field :fecha_precio, :class => "col-md-3", value: @articulo.fecha_precio.strftime("%d-%m-%Y") %>
+			  			<%= a.text_field :fecha_precio, :class => "col-md-3", value: diaMesAnio(@articulo.fecha_precio) %>
 			  			<%= button_tag :Hoy, :type => "button", :class => "col-md-1 btn button-hoy btn-sm btn-success"%>
 					</div>
 					<div class="form-control-inline">
@@ -53,6 +53,10 @@
 					<div class="form-control-inline">
 						<%= a.label :Ubicacion, :class => "col-sm-2" %>
 			  			<%= a.text_field :ubicacion, class: 'col-md-2' %>
+					</div>
+					<div class="form-control-inline">
+						<%= a.label :Comentarios, :class => "col-sm-2" %>
+			  			<%= a.text_area :comentarios, class: 'col-md-6' %>
 					</div>
 				</div>
 

@@ -13,24 +13,7 @@ class ArticulosController < ApplicationController
    end
 
    def create
-   byebug
-	   @articulo = Articulo.new(articulo_params)
-		if @articulo.fecha_precio.blank?
-			@articulo.fecha_precio = Time.now
-    end
-    if @articulo.precio.blank?
-      @articulo.precio = 0
-    end
-    if @articulo.costo.blank?
-      @articulo.costo = 0
-    end
-    if @articulo.ganancia.blank?
-      @articulo.ganancia = 0
-    end
-    if @articulo.ubicacion.blank?
-      @articulo.ubicacion = "SIN UBICACION"
-    end
-
+   @articulo = Articulo.new(articulo_params)
    	if @articulo.save
   		redirect_to articulos_path
   	else

@@ -1,15 +1,28 @@
-$('<%= j render "edit", title: "Editar articulo" %>').modal();
+var modalEdit = $('<%= j render "edit", title: "Editar articulo" %>').modal();
 
+$(modalEdit).on('hidden.bs.modal', function(){ 
+	$(modalEdit).remove();
+});
 
-$("#articulo_costo").keyup(function() {
-	$("#articulo_precio").val($("#articulo_costo").val() * ($("#articulo_ganancia").val()/100 + 1) * 1.21).toFixed(2)
+$(modalEdit).on('shown.bs.modal', function () {
+  $("#articulo_costo").keyup(function() {
+	  $("#articulo_precio").val(
+	  	((
+	  	parseInt($("#articulo_costo").val()) + 
+    	parseInt(($("#articulo_ganancia").val()/100) * $("#articulo_costo").val()
+    	)) * 1.21).toFixed(2)
+	  	)
 	})
 
-$("#articulo_ganancia").keyup(function() {
-    $("#articulo_precio").val($("#articulo_costo").val() * ($("#articulo_ganancia").val()/100 + 1) * 1.21).toFixed(2)
+  $("#articulo_ganancia").keyup(function() {
+   	  $("#articulo_precio").val(	((
+	  	$("#articulo_costo").val() + 
+    	(($("#articulo_ganancia").val()/100) * $("#articulo_costo").val()))
+    	 * 1.21).toFixed(2)
+	  	)
 	})
 
-$(".button-hoy").click(function() {
+  $(".button-hoy").click(function() {
 	var today = new Date();
 	var dd = today.getDate();
 	var mm = today.getMonth() + 1; //January is 0!
@@ -28,14 +41,4 @@ $(".button-hoy").click(function() {
 	$("#articulo_fecha_precio").val(today)
 })
 
-
-<% if @articulo.errors.empty? %>
-  $('#edit-modal').foundation('close');
-  
-<% end %>
-
-
- $('.btn-edit').click(function() {
- 	
-       toastr.success('Click Button');
-    });
+})

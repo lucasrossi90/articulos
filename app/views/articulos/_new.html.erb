@@ -1,4 +1,4 @@
-<div id="edit-modal" class="modal fade">
+<div id="new-modal" class="modal fade">
 	<div class="modal-dialog modal-lg">
 	<div class="modal-content">
 	<div class="modal-header">
@@ -53,6 +53,10 @@
 				<%= a.label :Proveedor, :class => "col-sm-2" %>
 	  			<%= a.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre, selected = 11), class: 'col-md-6' %>
 			</div>
+			<div class="form-control-inline">
+				<%= a.label :Comentarios, :class => "col-sm-2" %>
+	  			<%= a.text_area :comentarios, class: 'col-md-6' %>
+			</div>
 		</div>
 
 	    <div class="modal-footer">
@@ -65,5 +69,4 @@
  	   </div>
 
  </div>
-</div>
 </div>

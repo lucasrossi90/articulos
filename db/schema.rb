@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_08_150156) do
+ActiveRecord::Schema.define(version: 2019_02_28_215113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,15 +20,15 @@ ActiveRecord::Schema.define(version: 2019_02_08_150156) do
     t.string "codigo"
     t.string "descripcion"
     t.string "proveedor_id"
-    t.decimal "costo"
+    t.decimal "costo", default: "0.0", null: false
     t.date "fecha_precio"
-    t.decimal "precio"
+    t.decimal "precio", default: "0.0", null: false
     t.text "comentarios"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rubro_id"
     t.string "ubicacion"
-    t.decimal "ganancia"
+    t.decimal "ganancia", default: "0.0", null: false
     t.index ["interno"], name: "index_articulos_on_interno", unique: true
   end
 

@@ -1,5 +1,15 @@
 class RubrosController < ApplicationController
 
+  def new
+     nuevoRubro = buscarUltimoRubro
+     @rubro = Rubro.new
+     @rubro.id = nuevoRubro
+     respond_to do |format|
+        format.html
+        format.js
+      end
+  end
+
 	def index
 		@rubros = Rubro.all.order(:id)
 	end
@@ -49,6 +59,11 @@ class RubrosController < ApplicationController
   		@articulos = Rubro.search_articulos(params[:rubro_elegido], params[:orden])
   		respond_to :js
   	end
+
+    def buscarUltimoRubro
+      ultimo = Rubro.order(:id).last.id
+      nuevoRubro = ultimo + 1      
+    end
 
   	private
   	def rubro_params

@@ -22,7 +22,7 @@
         <input class="form-control search_rubro" type="text" placeholder="buscar RUBRO" id="rubro" autocomplete="off">
       </div>
       <div class="form-group col-md-1">
-        <%= button_to "Nuevo rubro", '/articulos', :method => :get, :class => "btn btn-nueva-busqueda btn-sm btn-success" %>
+        <%= link_to "Nuevo rubro", '/rubros/new', remote: true, class: 'btn btn-nueva-busqueda btn-sm btn-success'%>
       </div>
       <div class="form-group col-md-2">
         <%= link_to "Remarcar fecha de un RUBRO", '/rubros/edit_fecha_rubro', remote: true, class: 'btn btn-newarticulo btn-sm btn-success'%>
@@ -31,7 +31,7 @@
          <%= link_to "Remarcar precio de un RUBRO", '/rubros/edit_precio_rubro', remote: true, class: 'btn btn-newarticulo btn-sm btn-success'%>
      </div>
      <div class="form-group col-md-2">
-         <%= link_to "Ver articulos de un RUBRO", '/rubros/rubro_articulos', class: 'btn btn-newarticulo btn-sm btn-success'%>
+         <%= link_to "Ver articulos de un RUBRO", '/rubros/rubro_articulos', class: 'btn btn-ver-rubro btn-sm btn-success'%>
      </div>
 </div>
 
@@ -61,5 +61,6 @@
        });
 
       $(".btn-modificar") on ()
+
 
 </script>

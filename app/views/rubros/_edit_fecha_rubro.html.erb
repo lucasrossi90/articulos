@@ -1,5 +1,5 @@
     <div id="edit-modal" class="modal fade">
-  		<div class="modal-dialog modal-lg">
+  		<div class="modal-dialog modal-md">
     	 <div class="modal-content">
     	  <div class="modal-header">
        		<h5 class="modal-title">Remarcar fecha de los articulos de un rubro</h5>
@@ -13,8 +13,8 @@
              		<%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre), include_blank: 'Seleccionar RUBRO', class: 'form-control col-md-6'%>
      				</div>
      				<div class="form-control-inline">
-			      		<input class="form-control col-md-6" type="text" placeholder="Ingrese fecha deseada" id="fecha_update" autocomplete="off">
-			      		<button id="hoy" type="button" class="col-sm-2 btn button-hoy btn-sm btn-success">Hoy</button>
+     					<input class="form-control col-md-6" type="text" placeholder="Ingrese fecha deseada" id="fecha_update" autocomplete="off">
+			      		<button id="hoy" type="button" class="form-control col-md-2 btn button-hoy btn-sm btn-success">Hoy</button>
 			      	</div>
 				 </div>
 				    <div class="modal-footer">

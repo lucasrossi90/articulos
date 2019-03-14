@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-datepicker-rails'
 gem 'toastr-rails'
 gem 'breadcrumbs_on_rails'
-
+gem 'rails-i18n', '~> 5.1'
 
 
 gem 'bootstrap', '~> 4.1.3'

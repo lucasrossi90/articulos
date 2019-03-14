@@ -1,7 +1,7 @@
 class Articulo < ApplicationRecord
 	belongs_to :rubro
 	belongs_to :proveedor
-	
+	validates :interno, :codigo, presence: true
 	def self.search(interno, codigo, descripcion, checkCodigo, checkDescripcion, rubro)
     
     arts = Articulo.all
@@ -11,13 +11,13 @@ class Articulo < ApplicationRecord
 	  end	
 
 	  if codigo.present? && checkCodigo == 'true'
-	  		arts = arts.where("codigo ILIKE '#%{codigo}%'").order('codigo')
+	  		arts = arts.where("codigo ILIKE '%#{codigo}%'").order('codigo')
 	  	elsif codigo.present? && checkCodigo == 'false'
 	  		arts = arts.where("codigo ILIKE '#{codigo}%'").order('codigo')
 	  end
 
 	  if descripcion.present? && checkDescripcion == 'true'
-	  		arts = arts.where("descripcion ILIKE '#%{descripcion}%'").order('descripcion')
+	  		arts = arts.where("descripcion ILIKE '%#{descripcion}%'").order('descripcion')
   		  elsif descripcion.present? && checkDescripcion == 'false'
 	  		arts = arts.where("descripcion ILIKE '#{descripcion}%'").order('descripcion')
 	  end
