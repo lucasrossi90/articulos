@@ -6,7 +6,7 @@
 	d = row[1]
 	r = row[2]
 	rubronombre = row[3]
-	c = row[4]
+	cod = row[4]
 	u = row[5]
 
 	if Rubro.where(:id => r).exists?
@@ -16,36 +16,37 @@
 			nombre: rubronombre)
 	end
 
-	if c.nil?
-	c = 'sin código'
+	if cod.blank?
+	cod = 'sin código'
 	articulo = Articulo.create!(
     			  interno: i,
-                  codigo: c, 
+                  codigo: cod, 
                   descripcion: d, 
 				  rubro_id: r,
 				  ubicacion: u,
-				  proveedor_id: '9')
+				  proveedor_id: '2')
 	next
 	
 	elsif u.nil?
 	u = 'sin ubicación'
 	articulo = Articulo.create!(
 		 interno: i,
-         codigo: c, 
+         codigo: cod, 
          descripcion: d, 
 		 rubro_id: r,
 		 ubicacion: u,
-		 proveedor_id: '9')
+		 proveedor_id: '2')
 	next
 
 	else
+	
 	articulo = Articulo.create!(
 		 interno: i,
-         codigo: c, 
+         codigo: cod, 
          descripcion: d, 
 		 rubro_id: r,
 		 ubicacion: u,
-		 proveedor_id: '9')
+		 proveedor_id: '2')
 
 	end
 

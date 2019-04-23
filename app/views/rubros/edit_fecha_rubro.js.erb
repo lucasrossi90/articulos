@@ -6,7 +6,6 @@ $(modalFecha).on('hidden.bs.modal', function(){
 
 $(modalFecha).on('shown.bs.modal', function () {
 $("#hoy").click(function() {
-	debugger
 	var today = new Date();
 	var dd = today.getDate();
 	var mm = today.getMonth() + 1; //January is 0!
@@ -24,6 +23,19 @@ $("#hoy").click(function() {
 
 	$("#fecha_update").val(today)
 })
+
+$(".btn-edit-fecha").click(function(){
+	 $.ajax({
+	 		  type: 'POST',
+              url: '/rubros/update_fecha_rubro',
+              data: {rubro: $("#rubro_id").val(),
+              		 fecha: $("#fecha_update").val()
+               }
+           });
+
 })
+})
+
+
 
 

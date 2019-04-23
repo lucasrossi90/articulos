@@ -1,1 +1,16 @@
-$('<%= j render "edit_precio_rubro", title: "Editar la fecha del precio de todos los articulos de un rubro" %>').modal();
+var modalPrecio = $('<%= j render "edit_precio_rubro", title: "Editar la fecha del precio de todos los articulos de un rubro" %>').modal();
+
+$(modalPrecio).on('hidden.bs.modal', function(){ 
+	$(modalPrecio).remove();
+});
+
+$(modalPrecio).on('shown.bs.modal', function () {
+$(".btn-edit-precio").click(function(){
+	 $.ajax({
+	 		  type: 'POST',
+              url: '/rubros/update_precio_rubro',
+              data: {porcentaje: $("#porcentaje").val()
+               }
+});
+})
+})

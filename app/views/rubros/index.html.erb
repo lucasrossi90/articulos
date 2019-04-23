@@ -1,7 +1,5 @@
   <nav class="navbar navbar navbar-dark bg-dark">    
-        <li class="active inicio-nav" >
-          <a class='index-link' href="/rubros">Rubros</a>
-        </li>
+          <a class='index-link inicio-nav' href="/rubros">Rubros</a>
   </ol>
 
   <div class="btn-group">
@@ -52,15 +50,12 @@
   <script type="text/javascript">
 
        $(".search_rubro").change(function() {
-        
-           $.ajax({
+          $.ajax({
+              type: 'GET',
               url: '/rubros/search',
               data: {nombre_rubro: $("#rubro").val(),
-                   }
+              }
            });
        });
-
-      $(".btn-modificar") on ()
-
 
 </script>

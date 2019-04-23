@@ -1,4 +1,4 @@
-    <div id="edit-modal" class="modal fade">
+    <div id="fecha-rubro-modal" class="modal fade">
   		<div class="modal-dialog modal-md">
     	 <div class="modal-content">
     	  <div class="modal-header">
@@ -10,7 +10,7 @@
 			<div>
 				 <div class="modal-body">
 			      	<div class="form-control-inline">
-             		<%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre), include_blank: 'Seleccionar RUBRO', class: 'form-control col-md-6'%>
+             		<%= select_tag :rubro_id, options_from_collection_for_select(@rubros, :id, :nombre), include_blank: 'Seleccionar RUBRO', class: 'form-control col-md-6'%>
      				</div>
      				<div class="form-control-inline">
      					<input class="form-control col-md-6" type="text" placeholder="Ingrese fecha deseada" id="fecha_update" autocomplete="off">
@@ -18,7 +18,7 @@
 			      	</div>
 				 </div>
 				    <div class="modal-footer">
-				    	<button type="button" class="btn btn btn-edit" data-dismiss="modal">Actualizar fechas</button>
+				    	<input type="submit" class="btn btn btn-edit-fecha" value="Actualizar fechas">
 				    	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 					</div>
 				

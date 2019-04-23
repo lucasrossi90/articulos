@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_215113) do
+ActiveRecord::Schema.define(version: 2019_04_04_163933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articulos", force: :cascade do |t|
     t.integer "interno"
-    t.string "codigo"
+    t.string "codigo", null: false
     t.string "descripcion"
-    t.string "proveedor_id"
+    t.string "proveedor_id", default: "2", null: false
     t.decimal "costo", default: "0.0", null: false
     t.date "fecha_precio"
     t.decimal "precio", default: "0.0", null: false

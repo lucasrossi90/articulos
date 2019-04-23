@@ -8,3 +8,8 @@ $('#edit-modal').modal('hide');
 <% else %>
   toastr.error("<%= @articulo.errors.full_messages.join(", ") %>", 'Hubo un error');
 <% end %>
+
+
+$('#edit-modal').on('hidden.bs.modal', function(){ 
+	$('#edit-modal').remove();
+});

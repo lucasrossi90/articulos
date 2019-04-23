@@ -5,7 +5,7 @@ $(modalEdit).on('hidden.bs.modal', function(){
 });
 
 $(modalEdit).on('shown.bs.modal', function () {
-  $("#articulo_costo").keyup(function() {
+ $("#articulo_costo").keyup(function() {
 	  $("#articulo_precio").val(
 	  	((
 	  	parseInt($("#articulo_costo").val()) + 
@@ -41,4 +41,4 @@ $(modalEdit).on('shown.bs.modal', function () {
 	$("#articulo_fecha_precio").val(today)
 })
 
-})
+});

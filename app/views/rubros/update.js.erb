@@ -1,3 +1,6 @@
-$(".row-<%=@rubro.id%>").html("<%= escape_javascript render(:partial => 'rubros/update', :locals => { :rubro => @rubro }) %>");
+toastr.success('Articulos modificados');
+$('#fecha-rubro-modal').modal('hide');
 
-toastr.success('Have fun storming the castle!', 'Miracle Max Says')
+$('#fecha-rubro-modal').on('hidden.bs.modal', function(){ 
+	$('#fecha-rubro-modal').remove();
+});

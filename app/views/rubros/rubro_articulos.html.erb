@@ -1,7 +1,6 @@
   <nav class="navbar navbar navbar-dark bg-dark">    
-        <li class="active inicio-nav" >
-          <a class='index-link' href="/rubro_articulos">Articulos por RUBRO</a>
-        </li>
+      <a class='index-link inicio-nav' href="/rubro_articulos">Articulos por RUBRO</a>
+        
   </ol>
 
   <div class="btn-group">
@@ -22,10 +21,10 @@
   <div class="row form-group">
        <div class="col-md-1"></div>
        <label class="rubro-articulos">Seleccionar el RUBRO  </label>
-       <%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre), include_blank: 'Seleccione el RUBRO a mostrar', class: 'form-control col-md-4 search_rubro' %>
+       <%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre),  class: 'form-control col-md-4 search_rubro' %>
        <div class="col-sm-1"></div>
        <label class="rubro-articulos">Ordenado por</label>
-       <%=select_tag "sorting", "<option>interno</option><option>codigo</option><option>descripcion</option>".html_safe, include_blank: 'ordenado por...', class: 'form-control col-md-2 sort_search_rubro' %>
+       <%=select_tag "sorting", "<option>interno</option><option>codigo</option><option>descripcion</option>".html_safe, class: 'form-control col-md-2 sort_search_rubro' %>
  </div>
  <table class="table table-striped">
     <tr class=>
