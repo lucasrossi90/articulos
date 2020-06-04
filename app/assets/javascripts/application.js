@@ -15,5 +15,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr
+//= require jquery_nested_form
 //= require_tree .
 

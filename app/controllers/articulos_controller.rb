@@ -21,9 +21,24 @@ class ArticulosController < ApplicationController
   	end
    end
 
+   def delete
+      @articulo = Articulo.find(params[:id])
+      @rubros = Rubro.all.order(:nombre)
+      respond_to :js
+   end
+
+   def destroy
+   @articulo = Articulo.find(params[:id])
+   if @articulo.destroy
+      respond_to :js
+    else
+      render 'index'
+    end
+   end
+
    def index
         @rubros = Rubro.all.order(:nombre)
-    	@articulos = Articulo.order(:interno).first(10)
+    	  @articulos = Articulo.order(:interno).first(10)
    end
 
    def search
@@ -56,10 +71,10 @@ class ArticulosController < ApplicationController
 
   private
 
-    def articulo_params
-      params.require(:articulo).permit(:interno, :codigo, :descripcion,  
-      									:rubro_id, :proveedor_id, :costo, :ganancia,
-      									 :precio, :fecha_precio, :ubicacion)
-    end
+  def articulo_params
+    params.require(:articulo).permit(:interno, :codigo, :descripcion,  
+    									:rubro_id, :proveedor_id, :costo, :ganancia,
+    									 :precio, :fecha_precio, :ubicacion)
+  end
 
 end

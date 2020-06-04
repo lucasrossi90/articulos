@@ -2,6 +2,7 @@ class Articulo < ApplicationRecord
 	belongs_to :rubro
 	belongs_to :proveedor
 	validates :interno, :codigo, presence: true
+	
 	def self.search(interno, codigo, descripcion, checkCodigo, checkDescripcion, rubro)
     
     arts = Articulo.all

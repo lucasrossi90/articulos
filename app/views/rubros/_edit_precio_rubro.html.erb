@@ -1,4 +1,4 @@
-    <div id="edit-modal" class="modal fade">
+    <div id="rubro-precio-modal" class="modal fade">
   		<div class="modal-dialog modal-md">
     	 <div class="modal-content">
     	  <div class="modal-header">
@@ -10,14 +10,14 @@
 			<div>
 				 <div class="modal-body">
 			      	<div class="form-control-inline">
-             			<%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre), include_blank: 'Seleccionar RUBRO', class: 'form-control col-md-10'%>
+             			<%= select_tag :rubro_id, options_from_collection_for_select(@rubros, :id, :nombre), include_blank: 'Seleccionar RUBRO', class: 'form-control col-md-10'%>
      				</div>
      				<div class="form-control-inline">
-			       		<input class="form-control col-md-10" type="text" placeholder="Ingrese % a incrementar" id="porcentaje" autocomplete="off">
+			       		<input class="form-control col-md-10" type="text" placeholder="Ingrese porcentaje a incrementar" id="porcentaje" autocomplete="off">
 			      	</div>
 				 </div>
 				    <div class="modal-footer">
-				    	<button type="button" class="btn btn btn-edit-precio" data-dismiss="modal">Actualizar fechas</button>
+				    	<button type="button" class="btn btn btn-edit-precio" data-dismiss="modal">Actualizar precio</button>
 				    	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 					</div>
 				

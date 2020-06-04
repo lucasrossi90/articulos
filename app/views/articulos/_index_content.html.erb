@@ -8,7 +8,8 @@
       <td><%= mesAnio(articulo.fecha_precio) %></td>
       <td><%= articulo.ubicacion %></td>
       <td>
-      <%= link_to "Modificar", edit_articulo_path(articulo), remote: true, class: 'btn btn-modificar btn-sm'%>
+      <%= link_to "Editar", edit_articulo_path(articulo), remote: true, class: 'btn btn-modificar btn-sm'%>
+      <%= link_to "Borrar", delete_path(articulo), remote: true, class: 'btn btn-danger btn-eliminar btn-sm'%>
       </td>
       </tr>
    <% end %>

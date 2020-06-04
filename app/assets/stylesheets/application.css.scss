@@ -87,14 +87,22 @@ li a {
   text-decoration: none;
 }
 
+.btn-nueva-entrada:hover, .btn-nueva-entrada:active, .btn-nueva-entrada:focus,
 .btn-newarticulo:hover, .btn-newarticulo:active, .btn-newarticulo:focus{
     background-color: red !important;
     border-color: red !important;
+    color: white;
 }
 
-.btn-modificar:hover {
+.btn-nueva-salida:hover, .btn-modificar:hover {
  background-color: blue !important;
  border-color: blue !important;
+ color: white;
+}
+
+.btn-eliminar:hover {
+ background-color: #c97272 !important;
+ border-color: #c97272 !important;
  color: white;
 }
 
@@ -137,7 +145,12 @@ a {
     color:white;
 }
 
-.btn-newarticulo{
+.btn-modificar, .btn-eliminar {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.btn-nueva-entrada, .btn-newarticulo{
     white-space:normal;
     word-wrap: break-word;
     word-break: normal;
@@ -174,7 +187,7 @@ a {
 }
 
 
-.btn-modificar{
+.btn-nueva-salida, .btn-modificar{
 	background-color: #354e85;
 	color:white;
 }
@@ -237,9 +250,39 @@ a {
 
 .table-rubros {
   border-radius: 5px;
-    width: 60%;
+    width: 45%;
     margin: 0px auto;
     float: none;
+}
+
+.table-stock {
+  border-radius: 5px;
+    width: 70%;
+    margin: 0px auto;
+    float: none;
+    margin-top: 10px;
+}
+
+.form-stock {
+  border-radius: 5px;
+    width: 70%;
+    margin: 0px auto;
+    float: none;
+}
+
+
+.btn-borrar-movido {
+  margin-left: 40px;
+}
+
+
+.input-stock {
+  display: inline-block;
+}
+
+.row-stock-titulos {
+  background-color: grey;
+  color:black;
 }
 
 .rubro-articulos {
@@ -248,13 +291,14 @@ a {
     padding-right: 4px;
   }
 
-.btn-ver-rubro:hover{
+.btn-ajuste-stock:hover, .btn-ver-rubro:hover{
     background-color: #4171B0;
     border-color: #4171B0;
+    color: white;
 }
 
 
-.btn-ver-rubro{
+.btn-ajuste-stock, .btn-ver-rubro{
     white-space:normal;
     word-wrap: break-word;
     word-break: normal;

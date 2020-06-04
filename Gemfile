@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.0'
+ruby '2.4.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
@@ -26,6 +26,9 @@ gem 'bootstrap-datepicker-rails'
 gem 'toastr-rails'
 gem 'breadcrumbs_on_rails'
 gem 'rails-i18n', '~> 5.1'
+gem 'image_processing'
+gem "nested_form"
+
 
 
 gem 'bootstrap', '~> 4.1.3'

@@ -24,7 +24,7 @@
                   descripcion: d, 
 				  rubro_id: r,
 				  ubicacion: u,
-				  proveedor_id: '2')
+				  proveedor_id: '1')
 	next
 	
 	elsif u.nil?
@@ -35,7 +35,7 @@
          descripcion: d, 
 		 rubro_id: r,
 		 ubicacion: u,
-		 proveedor_id: '2')
+		 proveedor_id: '1')
 	next
 
 	else
@@ -46,7 +46,7 @@
          descripcion: d, 
 		 rubro_id: r,
 		 ubicacion: u,
-		 proveedor_id: '2')
+		 proveedor_id: '1')
 
 	end
 

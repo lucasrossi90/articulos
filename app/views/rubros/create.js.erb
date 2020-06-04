@@ -1,0 +1,15 @@
+<% if @rubro.errors.empty? %>
+$(".rubro_tbody_content").html("<%= escape_javascript render(:partial => 'rubros/rubro_index_content') %>");
+
+toastr.success('Rubro creado');
+$('#new-rubro-modal').modal('hide');
+
+
+<% else %>
+  toastr.error("<%= @rubro.errors.full_messages.join(", ") %>", 'Hubo un error');
+<% end %>
+
+
+$('#new-rubro-modal').on('hidden.bs.modal', function(){ 
+	$('#new-rubro-modal').remove();
+});

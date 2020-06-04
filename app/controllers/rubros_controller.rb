@@ -10,6 +10,30 @@ class RubrosController < ApplicationController
       end
   end
 
+  def create
+   @rubro = Rubro.new(rubro_params)
+    if @rubro.save
+      @rubros = Rubro.all.order(:id)
+      respond_to :js
+    else
+      render 'index'
+    end
+  end
+
+  def destroy
+    @rubro = Rubro.find(params[:id])
+    if @rubro.destroy
+      respond_to :js
+    else
+      render 'index'
+    end
+  end
+
+  def delete
+    @rubro = Rubro.find(params[:id])
+    respond_to :js
+  end
+  
 	def index
 		@rubros = Rubro.all.order(:id)
 	end
@@ -32,25 +56,23 @@ class RubrosController < ApplicationController
     if @rubro.update(rubro_params)
        respond_to :js
 	  end
-  	end
+  end
 
-    def edit_fecha_rubro
+  def edit_fecha_rubro
   	  @rubros = Rubro.all.order(:nombre)
    	  respond_to do |format|
    			format.html
    			format.js
    	  end  
-  	end
+  end
 
-    def update_fecha_rubro
+  def update_fecha_rubro
       nueva_fecha = params[:fecha]
       @articulos = Articulo.where(:rubro_id => params[:rubro]).update_all(:fecha_precio => nueva_fecha)
-      respond_to do |format|
-         format.js { render 'update'}
-      end
-    end
+      respond_to :js
+  end
 
-  	def edit_precio_rubro
+  def edit_precio_rubro
   	  @rubros = Rubro.all.order(:nombre)
    	  respond_to do |format|
    			format.html
@@ -64,9 +86,7 @@ class RubrosController < ApplicationController
       @articulos.each do |articulo|
         articulo.precio = articulo.precio + (articulo.precio * (porcentaje/100))
       end      
-      respond_to do |format|
-         format.js { render 'update'}
-      end
+      respond_to :js
     end
 
   	def rubro_articulos
@@ -81,11 +101,11 @@ class RubrosController < ApplicationController
 
     def buscarUltimoRubro
       ultimo = Rubro.order(:id).last.id
-      nuevoRubro = ultimo + 1      
+      nuevoRubro = ultimo + 1    
     end
 
-  	private
+   	private
   	def rubro_params
-  		params.require(:rubro).permit(:nombre)
+  		params.require(:rubro).permit(:id,:nombre)
   	end
 end

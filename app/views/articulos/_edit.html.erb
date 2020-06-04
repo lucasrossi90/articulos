@@ -31,15 +31,15 @@
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :Costo, :class => "col-sm-2" %>
-			  			<%= a.number_field :costo, :class => "col-md-3 " %>
+			  			<%= a.number_field :costo, :step => 0.01, :class => "col-md-3 " %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :Ganancia, :class => "col-sm-2" %>
-			  			<%= a.number_field :ganancia, :class => "col-md-3" %>
+			  			<%= a.number_field :ganancia, :step => 0.01, :class => "col-md-3" %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :'precio', "Precio IVA incl.", :class => "col-sm-2" %>
-			  			<%= a.number_field :precio, :class => "col-md-4 " %>
+			  			<%= a.number_field :precio, :step => 0.01, :class => "col-md-4 " %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :'Fecha precio', :class => "col-sm-2" %>

@@ -1,0 +1,9 @@
+      <% @proveedores.each do |proveedor| %>
+      <tr class="row-<%= proveedor.id %>">
+        <td><%= proveedor.id %></td>
+        <td><%= proveedor.nombre %></td>
+        <td>
+        <%= link_to "Modificar", edit_proveedore_path(proveedor), remote: true, class: 'btn btn-modificar btn-sm'%>
+        </td>
+      </tr>
+      <% end %>

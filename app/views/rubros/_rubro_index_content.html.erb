@@ -1,9 +1,10 @@
       <% @rubros.each do |rubro| %>
-      <tr class="row-<%= rubro.id %>">
+        <tr class="row-<%=rubro.id %>">
         <td><%= rubro.id %></td>
         <td><%= rubro.nombre %></td>
         <td>
-        <%= link_to "Modificar", edit_rubro_path(rubro), remote: true, class: 'btn btn-modificar btn-sm'%>
+        <%= link_to "Editar", edit_rubro_path(rubro), remote: true, class: 'btn btn-modificar btn-sm'%>
+         <%= link_to "Borrar", rubros_delete_path(rubro), remote: true, class: 'btn btn-eliminar btn-danger btn-sm'%>
         </td>
       </tr>
       <% end %>

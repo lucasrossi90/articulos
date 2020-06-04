@@ -1,0 +1,16 @@
+<% if @rubro.errors.empty? %>
+$(".row-<%=@rubro.id%>").html("");
+
+
+toastr.success('Rubro borrado');
+$('#delete-rubro-modal').modal('hide');
+
+
+<% else %>
+  toastr.error("<%= @rubro.errors.full_messages.join(", ") %>", 'Hubo un error');
+<% end %>
+
+
+$('#delete-rubro-modal').on('hidden.bs.modal', function(){ 
+	$('#delete-rubro-modal').remove();
+});

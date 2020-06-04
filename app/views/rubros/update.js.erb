@@ -1,6 +1,13 @@
-toastr.success('Articulos modificados');
-$('#fecha-rubro-modal').modal('hide');
+<% if @rubro.errors.empty? %>
+$(".row-<%=@rubro.id%>").html("<%= escape_javascript render(:partial => 'rubros/update', :locals => { :rubro => @rubro }) %>");
 
-$('#fecha-rubro-modal').on('hidden.bs.modal', function(){ 
-	$('#fecha-rubro-modal').remove();
+	toastr.success('Articulos modificados');
+	$('#edit-rubro-modal').modal('hide');
+
+	<% else %>
+	  toastr.error("<%= @rubro.errors.full_messages.join(", ") %>", 'Hubo un error');
+	<% end %>
+
+$('#edit-rubro-modal').on('hidden.bs.modal', function(){ 
+	$('#edit-rubro-modal').remove();
 });

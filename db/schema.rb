@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_163933) do
+ActiveRecord::Schema.define(version: 2020_05_28_151821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,24 @@ ActiveRecord::Schema.define(version: 2019_04_04_163933) do
     t.string "ubicacion"
     t.decimal "ganancia", default: "0.0", null: false
     t.index ["interno"], name: "index_articulos_on_interno", unique: true
+  end
+
+  create_table "movimiento_stocks", force: :cascade do |t|
+    t.string "tipoMovimiento"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "producto_movidos", force: :cascade do |t|
+    t.integer "interno"
+    t.integer "proveedor"
+    t.datetime "fecha"
+    t.integer "cantidad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "codigo"
+    t.string "descripcion"
+    t.integer "movimiento_stock_id"
   end
 
   create_table "proveedors", force: :cascade do |t|

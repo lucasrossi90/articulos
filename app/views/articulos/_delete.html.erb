@@ -1,0 +1,47 @@
+<div id="delete-articulo-modal" class="modal fade">
+<div class="modal-dialog modal-lg">
+ <div class="modal-content">
+  <div class="modal-header">
+		<h5 class="modal-title">¿Seguro que quiere eliminar el articulo?</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="close">
+  		<span aria-hidden="true">&times;</span>
+	</button>
+	  </div>
+		<div>
+		    <%= form_for @articulo, remote: true do |a| %>
+		    <div class="modal-body">
+
+		      	<div class="form-control-inline ">
+			      	<%= a.label :Interno, :class => "col-sm-2" %>
+			  		<%= a.text_field :interno, :disabled => true, :class => "col-md-2"  %>
+		  		</div>
+
+		  		<div class="form-control-inline">
+					<%= a.label :Codigo, :class => "col-sm-2" %>
+		  			<%= a.text_field :codigo,  :disabled => true, :class => "col-md-3" %>
+		  		</div>
+		  		<div class="form-control-inline">
+					<%= a.label :Descripción, :class => "col-sm-2" %>
+		  			<%= a.text_field :descripcion,  :disabled => true, :class => "col-md-6" %>
+		  		</div>	
+		  		<div class="form-control-inline">
+					<%= a.label :Rubro, :class => "col-sm-2" %>
+		  			<%= a.select :rubro_id, options_from_collection_for_select(@rubros, :id, :nombre, 
+		  			 selected = a.object.rubro_id), class: 'col-md-6', :disabled => true %>
+			</div>
+			<% end %>
+		 </div>
+
+			<div class="modal-footer">
+      				<%= link_to "Borrar", articulo_path(@articulo), method: :delete, remote: true, class: 'btn btn-edit'%>
+			    	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+			</div>
+			
+		 </div>
+
+ 	</div>
+ </div>
+</div>
+
+
+

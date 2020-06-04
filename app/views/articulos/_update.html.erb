@@ -3,7 +3,12 @@
 	<td><%= @articulo.descripcion %></td>
 	<td><%= @articulo.rubro.nombre[0..1] %></td>
 	<td><%= @articulo.precio.round(2) %></td>
-	<td><%= @articulo.fecha_precio.strftime("%m-%Y") %></td>
+	<td>
+		<%= if @articulo.fecha_precio =! "-"
+			@articulo.fecha_precio.strftime("%m-%Y")
+					else @articulo.fecha_precio
+		end %>			
+	</td>
 	<td><%= @articulo.ubicacion %></td>
 	<td>
       <%= link_to "Modificar", edit_articulo_path(articulo), remote: true, class: 'btn btn-modificar btn-sm'%>

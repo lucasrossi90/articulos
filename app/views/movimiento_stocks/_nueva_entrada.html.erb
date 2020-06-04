@@ -1,0 +1,62 @@
+ <div class="col-md-2">
+     <%= select_tag :proveedor, options_from_collection_for_select(@proveedores, :id, :nombre), include_blank: 'Seleccione PROVEEDOR', class: 'form-control' %>
+ </div>
+
+<div class="table-stock">
+<%= nested_form_for @movimiento_stock do |m| %>
+<table class="table table-striped" >
+ 	<tr class=>
+		  <th style="width: 5%">Interno</th>
+		  <th style="width: 25%">Codigo</th>
+		  <th style="width: 40%">Descripcion</th>
+		  <th style="width: 24%">Cantidad</th>
+	</tr>
+</table>
+	<%= m.fields_for :producto_movidos, :wrapper => false do |movido_form| %>
+		
+			<%= movido_form.text_field :interno, class: "col-md-1 form-control input-stock stock-search-interno" %>
+		
+		 	<%= movido_form.text_field :codigo, disabled: true, class: "col-md-2 form-control input-stock" %>
+		
+			<%= movido_form.text_field :descripcion, disabled: true, class: "col-md-6 form-control  input-stock"  %>
+	
+			<%= movido_form.text_field :cantidad, class: "col-md-1 form-control input-stock"  %>
+
+			<%= movido_form.link_to_remove "Borrar", class: "col-md-1 btn btn-borrar-movido btn-danger" %> 
+		
+		<% end %>
+			<p> 
+			<%= m.link_to_add "Agregar articulo", :producto_movidos,  class: "btn boton-agregar-articulo btn-modificar" %>
+			</p>
+			
+	<% end %>
+</div> 
+
+
+<script type="text/javascript">
+
+  $(document).on('nested:fieldAdded', function(event){
+    var field = event.field;
+    var internoField = field.find('.stock-search-interno');
+
+    internoField.change(function() {
+    debugger
+    focus++;
+    string = $(".stock-search-interno").attr('id');
+    parsed_input_id = string.replace(/[^0-9]/gi, '');
+
+	$.ajax({
+	   url: '/movimiento_stocks/search',
+	   data: {interno: $(".stock-search-interno").val(),
+	          input_id: parsed_input_id
+	         }
+		})
+	})
+
+})
+
+
+ 
+  
+
+</script>

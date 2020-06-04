@@ -1,0 +1,16 @@
+<% if @articulo.errors.empty? %>
+$(".row-<%=@articulo.interno%>").html("");
+
+
+toastr.success('Articulo borrado');
+$('#delete-articulo-modal').modal('hide');
+
+
+<% else %>
+  toastr.error("<%= @articulo.errors.full_messages.join(", ") %>", 'Hubo un error');
+<% end %>
+
+
+$('#delete-articulo-modal').on('hidden.bs.modal', function(){ 
+	$('#delete-articulo-modal').remove();
+});

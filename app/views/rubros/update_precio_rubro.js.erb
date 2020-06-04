@@ -1,0 +1,13 @@
+<% if @articulos.errors.empty? %>
+
+	toastr.success('Articulos modificados');
+	$('#rubro-fecha-modal').modal('hide');
+
+	<% else %>
+	  toastr.error("<%= @articulo.errors.full_messages.join(", ") %>", 'Hubo un error');
+	<% end %>
+
+
+	$('#rubro-fecha-modal').on('hidden.bs.modal', function(){ 
+		$('#rubro-fecha-modal').remove();
+});

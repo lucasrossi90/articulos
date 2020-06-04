@@ -9,7 +9,8 @@ $(".btn-edit-precio").click(function(){
 	 $.ajax({
 	 		  type: 'POST',
               url: '/rubros/update_precio_rubro',
-              data: {porcentaje: $("#porcentaje").val()
+              data: {porcentaje: $("#porcentaje").val(),
+              		 rubro: $("#rubro_id").val()
                }
 });
 })
