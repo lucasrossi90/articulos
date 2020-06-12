@@ -30,6 +30,12 @@ class Articulo < ApplicationRecord
 	  arts.includes(:rubro)
 
 	end  
+
+	def self.search_stock (input_interno)
+		articulo = Articulo.where("interno = '#{input_interno}'")
+		articulo
+	end
+
 	
 	def ultimo_interno
 		ultimo = Articulo.order(:interno).last.interno

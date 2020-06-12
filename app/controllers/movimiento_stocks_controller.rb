@@ -4,8 +4,14 @@ class MovimientoStocksController < ApplicationController
 	end
 
 	def search
-		@articulo = Artiulo.search(params[:interno], params[:input_id])
-		respond_to :js
+		@articulo = Articulo.search_stock(params[:interno])
+		@articulo.to_json
+	 		render json: @articulo
+  	end
+
+  	def procesar_entrada
+  		@movimiento_stock
+  		byebug  	
 	end
 
 	def nueva_entrada
@@ -16,7 +22,7 @@ class MovimientoStocksController < ApplicationController
    	end
 
    	def movimiento_stock_params
-   		params.require(:movimiento_stock).permit(:tipomovimiento, producto_movidos_attributes: [:interno,
+   		params.require(:movimiento_stock).permit(:tipomovimiento, producto_movidos_attributes: [:id, :interno,
    													:descripcion, :cantidad, :codigo, :proveedor, :_destroy])
    	end
 end

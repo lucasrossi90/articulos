@@ -1,6 +1,7 @@
- <div class="col-md-2">
-     <%= select_tag :proveedor, options_from_collection_for_select(@proveedores, :id, :nombre), include_blank: 'Seleccione PROVEEDOR', class: 'form-control' %>
- </div>
+<div class="form-inline select-procesar-stock" >
+	 <%= select_tag :proveedor, options_from_collection_for_select(@proveedores, :id, :nombre), include_blank: 'Seleccione PROVEEDOR', class: 'form-control select-stock' %>
+	<%= link_to "Procesar entrada", '/movimiento_stocks/procesar_entrada', method: :post, movimiento_stock: @movimiento_stock, remote: true, class: 'btn btn-procesar-stock btn-success procesar-stock btn-lg '%>
+</div>
 
 <div class="table-stock">
 <%= nested_form_for @movimiento_stock do |m| %>
@@ -13,18 +14,24 @@
 	</tr>
 </table>
 	<%= m.fields_for :producto_movidos, :wrapper => false do |movido_form| %>
-		
-			<%= movido_form.text_field :interno, class: "col-md-1 form-control input-stock stock-search-interno" %>
-		
-		 	<%= movido_form.text_field :codigo, disabled: true, class: "col-md-2 form-control input-stock" %>
-		
-			<%= movido_form.text_field :descripcion, disabled: true, class: "col-md-6 form-control  input-stock"  %>
-	
-			<%= movido_form.text_field :cantidad, class: "col-md-1 form-control input-stock"  %>
-
-			<%= movido_form.link_to_remove "Borrar", class: "col-md-1 btn btn-borrar-movido btn-danger" %> 
-		
-		<% end %>
+		<div class="row-stock fields  row-parent">
+			<div class="row-stock col-md-1 row-stock-interno">
+				<%= movido_form.text_field :interno, class: "form-control  input-stock stock-search-interno"%>
+			</div>
+			<div class="row-stock   col-md-3 row-stock-codigo">
+		 		<%= movido_form.text_field :codigo, disabled: true, class: "form-control input-stock-codigo stock-search-codigo" %>
+			</div>
+			<div class="row-stock  col-md-5 row-stock-descripcion">
+				<%= movido_form.text_field :descripcion, disabled: true, class: " form-control input-stock stock-search-descripcion"  %>
+			</div>
+			<div class="row-stock  col-md-1 row-stock-cantidad">
+				<%= movido_form.text_field :cantidad, class: "form-control input-stock"  %>
+			</div>
+			<div class="row-stock  col-md-1 row-boton-borrar">
+				<%= movido_form.link_to_remove "Borrar", class: "btn  btn-borrar-movido btn-danger" %> 
+			</div>
+		</div>
+	<% end %>
 			<p> 
 			<%= m.link_to_add "Agregar articulo", :producto_movidos,  class: "btn boton-agregar-articulo btn-modificar" %>
 			</p>
@@ -35,28 +42,5 @@
 
 <script type="text/javascript">
 
-  $(document).on('nested:fieldAdded', function(event){
-    var field = event.field;
-    var internoField = field.find('.stock-search-interno');
-
-    internoField.change(function() {
-    debugger
-    focus++;
-    string = $(".stock-search-interno").attr('id');
-    parsed_input_id = string.replace(/[^0-9]/gi, '');
-
-	$.ajax({
-	   url: '/movimiento_stocks/search',
-	   data: {interno: $(".stock-search-interno").val(),
-	          input_id: parsed_input_id
-	         }
-		})
-	})
-
-})
-
-
- 
-  
 
 </script>

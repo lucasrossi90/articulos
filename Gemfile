@@ -27,7 +27,7 @@ gem 'toastr-rails'
 gem 'breadcrumbs_on_rails'
 gem 'rails-i18n', '~> 5.1'
 gem 'image_processing'
-gem "nested_form"
+gem 'nested_form', github: 'ryanb/nested_form'
 
 
 

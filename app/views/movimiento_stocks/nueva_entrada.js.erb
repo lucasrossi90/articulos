@@ -1,7 +1,38 @@
 $(".form-target").html('<%= j render "nueva_entrada" %>');
 
 
+  $(document).on('nested:fieldAdded', function(event){
+    var field = event.field;
+    
+    var internoField = field.find('.stock-search-interno');
+    internoField.change(function() {
+    
+    var inputs = $(this).parent().closest('.row-parent')
+    $.ajax({
+	   url: '/movimiento_stocks/search',
+	   data: {interno: internoField.val(),
+	         },
+	   success: function(response){
+   		var articulo = response[0];
+
+	   	if (typeof(articulo) === 'undefined'){
+	   		codigo = inputs.find(".stock-search-codigo")[0];
+	   		$(codigo).val("INCORRECTO");
+	   		descripcion = inputs.find(".stock-search-descripcion")[0];
+	   		$(descripcion).val("ARTICULO INEXISTENTE");
+	   	}
+	   	else
+	   	{		
+	   		codigo = inputs.find(".stock-search-codigo")[0];
+	   		$(codigo).val(articulo.codigo);
+	   		descripcion = inputs.find(".stock-search-descripcion")[0];
+	   		$(descripcion).val(articulo.descripcion);
+	   	}
+	   }
+	})
+})
+
+})
 
  
-
 

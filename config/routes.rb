@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 	get 'rubros/rubro_articulos', to: 'rubros#rubro_articulos'
 	get 'rubros/destroy_confirm', to: 'rubros#destroy_confirm'
 	get 'movimiento_stocks/nueva_entrada', to: 'movimiento_stocks#nueva_entrada'
+	get 'movimiento_stocks/search', to: 'movimiento_stocks#search'
+
+	post 'movimiento_stocks/procesar_entrada', to: 'movimiento_stocks#procesar_entrada'
 	post 'rubros/update_fecha_rubro', to: 'rubros#update_fecha_rubro'
 	post 'rubros/update_precio_rubro', to: 'rubros#update_precio_rubro'
 	resources :articulos
