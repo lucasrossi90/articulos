@@ -1,10 +1,10 @@
-<div class="form-inline select-procesar-stock" >
-	 <%= select_tag :proveedor, options_from_collection_for_select(@proveedores, :id, :nombre), include_blank: 'Seleccione PROVEEDOR', class: 'form-control select-stock' %>
-	<%= link_to "Procesar entrada", '/movimiento_stocks/procesar_entrada', method: :post, movimiento_stock: @movimiento_stock, remote: true, class: 'btn btn-procesar-stock btn-success procesar-stock btn-lg '%>
+<div class="table-stock">
+	<%= nested_form_for @movimiento_stock do |m| %>
+	<div class="form-inline select-procesar-stock" >
+		<%= m.select :proveedor, options_from_collection_for_select(@proveedores, :id, :nombre), include_blank: 'Seleccione PROVEEDOR', required: true, selected: "", class: 'form-control form-inline select-stock' %>
+		<%= m.submit "Procesar entrada", class: 'btn form-inline btn-procesar-stock btn-success procesar-stock btn-lg '%>
 </div>
 
-<div class="table-stock">
-<%= nested_form_for @movimiento_stock do |m| %>
 <table class="table table-striped" >
  	<tr class=>
 		  <th style="width: 5%">Interno</th>
@@ -35,12 +35,13 @@
 			<p> 
 			<%= m.link_to_add "Agregar articulo", :producto_movidos,  class: "btn boton-agregar-articulo btn-modificar" %>
 			</p>
-			
 	<% end %>
 </div> 
 
 
 <script type="text/javascript">
+      // wait for the DOM to be loaded 
 
+ 
 
 </script>

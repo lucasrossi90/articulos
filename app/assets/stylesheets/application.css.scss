@@ -255,14 +255,6 @@ a {
     float: none;
 }
 
-.table-stock {
-  border-radius: 5px;
-    width: 70%;
-    margin: 0px auto;
-    float: none;
-    margin-top: 10px;
-}
-
 .form-stock {
   border-radius: 5px;
     width: 70%;
@@ -311,6 +303,19 @@ a {
   display: inline-block; 
 }
 
+.select-stock {
+  margin-left: 185px;
+}
+
+.select-procesar-stock {
+  margin-bottom: 10px;
+}
+
+
+.btn-procesar-stock {
+  margin-left: 530px;
+}
+
 .row-stock {
   display: inline-block;
   padding: 0;
@@ -320,14 +325,12 @@ a {
   margin-bottom: 30px;
 }
 
-.select-stock {
-  margin-left: 185px;
+
+.table-stock {
+  border-radius: 5px;
+    width: 70%;
+    margin: 0px auto;
+    float: none;
+    margin-top: 10px;
 }
 
-.select-procesar-stock {
- display: inline;
-}
-
-.btn-procesar-stock {
-  margin-left: 515px;
-}

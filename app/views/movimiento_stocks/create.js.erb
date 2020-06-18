@@ -1,0 +1,8 @@
+<% if @movimiento_stock.errors.empty? %>
+
+toastr.success('Stock modificado');
+
+<% else %>
+  toastr.error("<%= @movimiento_stock.errors.full_messages.join(", ") %>", 'Hubo un error');
+<% end %>
+
