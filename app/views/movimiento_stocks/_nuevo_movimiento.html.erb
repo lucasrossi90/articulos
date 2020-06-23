@@ -1,8 +1,10 @@
 <div class="table-stock">
 	<%= nested_form_for @movimiento_stock do |m| %>
 	<div class="form-inline select-procesar-stock" >
-		<%= m.select :proveedor, options_from_collection_for_select(@proveedores, :id, :nombre), include_blank: 'Seleccione PROVEEDOR', required: true, selected: "", class: 'form-control form-inline select-stock' %>
+		<%= m.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), {:prompt => 'Seleccione PROVEEDOR'}, 
+			{ :required => true, class: 'form-control form-inline select-stock'} %>
 		<%= m.submit "Procesar entrada", class: 'btn form-inline btn-procesar-stock btn-success procesar-stock btn-lg '%>
+		<%= m.hidden_field :tipoMovimiento, class: "stock-tipo-movimiento"%>
 </div>
 
 <table class="table table-striped" >
@@ -28,8 +30,10 @@
 				<%= movido_form.text_field :cantidad, class: "form-control input-stock"  %>
 			</div>
 			<div class="row-stock  col-md-1 row-boton-borrar">
-				<%= movido_form.link_to_remove "Borrar", class: "btn  btn-borrar-movido btn-danger" %> 
+				<%= movido_form.link_to_remove "Borrar", class: "btn  btn-borrar-movido btn-danger" %>
 			</div>
+				<%= movido_form.hidden_field :articulo_id, class: "stock-articulo-id" %>
+
 		</div>
 	<% end %>
 			<p> 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 	get 'rubros/edit_precio_rubro', to: 'rubros#edit_precio_rubro'
 	get 'rubros/rubro_articulos', to: 'rubros#rubro_articulos'
 	get 'rubros/destroy_confirm', to: 'rubros#destroy_confirm'
-	get 'movimiento_stocks/nueva_entrada', to: 'movimiento_stocks#nueva_entrada'
+	get 'movimiento_stocks/nuevo_movimiento', to: 'movimiento_stocks#nuevo_movimiento'
 	get 'movimiento_stocks/search', to: 'movimiento_stocks#search'
 
 	post 'movimiento_stocks/procesar_entrada', to: 'movimiento_stocks#procesar_entrada'

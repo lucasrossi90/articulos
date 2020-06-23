@@ -22,7 +22,7 @@
       <div class="col-md-3">
       </div>
       <div class="form-group col-md-2">
-        <%= link_to "Entrada stock", movimiento_stocks_nueva_entrada_path(@movimiento_stock), remote: true, class: 'btn btn-nueva-entrada btn-lg '%>
+        <%= link_to "Entrada stock", movimiento_stocks_nuevo_movimiento_path(tipoMovimiento: 'entrada'), remote: true, class: 'btn btn-nueva-entrada btn-lg '%>
       </div>
       <div class="form-group col-md-2">
         <%= link_to "Salida stock", '/rubros/edit_fecha_rubro', remote: true, class: 'btn btn-nueva-salida btn-lg '%>

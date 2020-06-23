@@ -4,8 +4,8 @@ class ProductoMovidosController < ApplicationController
 	end
 
 	def producto_movido_params
-    params.require(:producto_movido).permit(:_destroy, :interno, :codigo,
-    										:descripcion, :cantidad, :proveedor)
+    params.require(:producto_movido).permit(:_destroy, :articulo_id, :interno, :codigo,
+    										:descripcion, :cantidad)
 	end
 
 end

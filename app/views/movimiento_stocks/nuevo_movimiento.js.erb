@@ -1,4 +1,4 @@
-$(".form-target").html('<%= j render "nueva_entrada" %>');
+$(".form-target").html('<%= j render "nuevo_movimiento" %>');
 
 
   $(document).on('nested:fieldAdded', function(event){
@@ -27,6 +27,8 @@ $(".form-target").html('<%= j render "nueva_entrada" %>');
 	   		$(codigo).val(articulo.codigo);
 	   		descripcion = inputs.find(".stock-search-descripcion")[0];
 	   		$(descripcion).val(articulo.descripcion);
+	   		articulo_id = inputs.find(".stock-articulo-id")[0];
+	   		$(articulo_id).val(articulo.id);
 	   	}
 	   }
 	})
@@ -35,21 +37,16 @@ $(".form-target").html('<%= j render "nueva_entrada" %>');
 })
 
 $(document).ready(function() { 
-
+	 var options = { 
+        url:'/movimiento_stocks/procesar_entrada',
+        data: {proveedor_id: $('#movimiento_stock_proveedor').val(),
+        	   tipoMovimiento: 'entrada' }
+        }
 // bind 'myForm' and provide a simple callback function 
-	$('#new_movimiento_stock').ajaxForm(function() { 
+	$('#new_movimiento_stock').ajaxForm(function(options) {
 	}); 
 
-	$(".btn-procesar-stock").click(function(){
-    	var queryString = $('.btn-procesar-stock').formSerialize(); 
-    	debugger
-	    $(this).ajaxSubmit({	    
-	    	url: '/movimiento_stocks/procesar_entrada',
-	   		data: {interno: internoField.val()
-	         }
-	      })  
-		})
-	
+
 })
 
  

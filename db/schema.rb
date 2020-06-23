@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_184852) do
+ActiveRecord::Schema.define(version: 2020_06_23_172131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_184852) do
 
   create_table "producto_movidos", force: :cascade do |t|
     t.integer "interno"
-    t.integer "proveedor"
     t.datetime "fecha"
     t.integer "cantidad"
     t.datetime "created_at", null: false
@@ -49,6 +48,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_184852) do
     t.string "codigo"
     t.string "descripcion"
     t.integer "movimiento_stock_id"
+    t.integer "articulo_id"
+    t.bigint "articulos_id"
+    t.index ["articulos_id"], name: "index_producto_movidos_on_articulos_id"
   end
 
   create_table "proveedors", force: :cascade do |t|
@@ -65,4 +67,5 @@ ActiveRecord::Schema.define(version: 2020_06_15_184852) do
     t.index ["id"], name: "index_rubros_on_id", unique: true
   end
 
+  add_foreign_key "producto_movidos", "articulos"
 end

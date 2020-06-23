@@ -11,6 +11,7 @@ class MovimientoStocksController < ApplicationController
 
   	def create
   		@movimiento_stock = MovimientoStock.new(movimiento_stock_params)
+  		byebug 		
   		if @movimiento_stock.save
 			respond_to do |format|
 		    format.js
@@ -18,8 +19,8 @@ class MovimientoStocksController < ApplicationController
 		end
 	end
 
-	def nueva_entrada
-		@movimiento_stock = MovimientoStock.new(:tipoMovimiento => 'entrada')
+	def nuevo_movimiento
+		@movimiento_stock = MovimientoStock.new(tipoMovimiento: params[:tipoMovimiento])
 		@producto_movido = ProductoMovido.new
    		@proveedores = Proveedor.all.order(:nombre)
    		respond_to :js
@@ -27,7 +28,9 @@ class MovimientoStocksController < ApplicationController
 
    	private
    	def movimiento_stock_params
-   		params.require(:movimiento_stock).permit(:tipomovimiento, producto_movidos_attributes: [:id, :interno,
-   													:descripcion, :cantidad, :codigo, :proveedor, :_destroy])
+   		params.require(:movimiento_stock).permit(:tipoMovimiento, :proveedor_id, 
+   													producto_movidos_attributes: [:id, :articulo_id,
+   													:interno, :descripcion, :cantidad, :codigo, :_destroy])
    	end
 end
+

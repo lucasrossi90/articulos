@@ -1,7 +1,8 @@
 class Articulo < ApplicationRecord
 	belongs_to :rubro
 	belongs_to :proveedor
-	validates :interno, :codigo, presence: true
+	has_many :producto_movidos, inverse_of: :articulo
+	validates :interno, presence: true
 	
 	def self.search(interno, codigo, descripcion, checkCodigo, checkDescripcion, rubro)
     
