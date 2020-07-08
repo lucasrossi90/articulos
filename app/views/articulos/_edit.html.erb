@@ -11,52 +11,57 @@
 			    <%= form_for @articulo, remote: true do |a| %>
 			    <div class="modal-body">
 
-			      	<div class="form-control-inline ">
+			      	<div class="form-control-inline">
 				      	<%= a.label :Interno, :class => "col-sm-2" %>
-				  		<%= a.text_field :interno, :disabled => true, :class => "col-md-2"  %>
-			  		</div>
+				  		<%= a.text_field :interno, :disabled => true, :class => "form-control input-articulo-edit col-md-2"  %>
+				  	</div>
 
 			  		<div class="form-control-inline">
 						<%= a.label :Codigo, :class => "col-sm-2" %>
-			  			<%= a.text_field :codigo, :class => "col-md-3" %>
+			  			<%= a.text_field :codigo, :class => "form-control input-articulo-edit col-md-3" %>
 			  		</div>
 			  		<div class="form-control-inline">
 						<%= a.label :Descripción, :class => "col-sm-2" %>
-			  			<%= a.text_field :descripcion, :class => "col-md-6" %>
+			  			<%= a.text_field :descripcion, :class => "form-control input-articulo-edit col-md-6" %>
 			  		</div>	
 			  		<div class="form-control-inline">
 						<%= a.label :Rubro, :class => "col-sm-2" %>
 			  			<%= a.select :rubro_id, options_from_collection_for_select(@rubros, :id, :nombre, 
-			  			 selected = a.object.rubro_id), class: 'col-md-6' %>
+			  			 selected = a.object.rubro_id), {}, {class: 'form-control input-articulo-edit col-md-4'} %>
+
+			  			<%= a.label :Proveedor, :class => "select-articulo-proveedor col-sm-1" %>
+			  			<%= a.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre, selected = a.object.proveedor_id), {}, { class: 'form-control form-inline  input-articulo-edit col-md-4'}  %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :Costo, :class => "col-sm-2" %>
-			  			<%= a.number_field :costo, :step => 0.01, :class => "col-md-3 " %>
+			  			<%= a.number_field :costo, :step => 0.01, :class => "form-control input-articulo-edit col-md-3 " %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :Ganancia, :class => "col-sm-2" %>
-			  			<%= a.number_field :ganancia, :step => 0.01, :class => "col-md-3" %>
+			  			<%= a.number_field :ganancia, :step => 0.01, :class => "form-control input-articulo-edit col-md-3" %>			  			
 					</div>
 					<div class="form-control-inline">
-						<%= a.label :'precio', "Precio IVA incl.", :class => "col-sm-2" %>
-			  			<%= a.number_field :precio, :step => 0.01, :class => "col-md-4 " %>
+					<%= a.label :Descuento, :class => "col-sm-2" %>
+			  			<%= a.number_field :descuento, :step => 0.01, :class => "form-control input-articulo-edit col-md-3" %>
+					</div>
+
+					<div class="form-control-inline">
+						<%= a.label :'precio', "Precio", :class => "col-sm-2" %>
+			  			<%= a.number_field :precio, :step => 0.01, :class => "form-control input-articulo-edit col-md-3 " %>
+						<%= a.label :'notaPrecio', "*este precio incluye IVA", :class => "nota-precio col-sm-4" %>			  		
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :'Fecha precio', :class => "col-sm-2" %>
-			  			<%= a.text_field :fecha_precio, :class => "col-md-3", value: diaMesAnio(@articulo.fecha_precio) %>
+			  			<%= a.text_field :fecha_precio, :class => "form-control input-articulo-edit col-md-3", value: diaMesAnio(@articulo.fecha_precio) %>
 			  			<%= button_tag :Hoy, :type => "button", :class => "col-md-1 btn button-hoy btn-sm btn-success"%>
 					</div>
 					<div class="form-control-inline">
-						<%= a.label :Proveedor, :class => "col-sm-2" %>
-			  			<%= a.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre, selected = a.object.proveedor_id), class: 'col-md-6' %>
-					</div>
-					<div class="form-control-inline">
 						<%= a.label :Ubicacion, :class => "col-sm-2" %>
-			  			<%= a.text_field :ubicacion, class: 'col-md-2' %>
+			  			<%= a.text_field :ubicacion, class: 'form-control input-articulo-edit col-md-2' %>
 					</div>
 					<div class="form-control-inline">
 						<%= a.label :Comentarios, :class => "col-sm-2" %>
-			  			<%= a.text_area :comentarios, class: 'col-md-6' %>
+			  			<%= a.text_area :comentarios, class: 'form-control input-articulo-edit col-md-8' %>
 					</div>
 				</div>
 

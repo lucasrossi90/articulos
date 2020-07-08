@@ -3,6 +3,22 @@ class MovimientoStocksController < ApplicationController
 	def index
 	end
 
+	def listados
+		tipoListado = params[:tipoListado]
+		case tipoListado
+			when "articulo"
+				render "movimiento_stocks/listado_stock_articulo.js.erb"
+		end
+	end
+
+	def nuevo_listado
+		tipoListado = params[:tipoListado]
+		case tipoListado
+			when "articulo"
+				render :partial => "movimiento_stocks/listado_stock_articulo.js"
+		end
+	end
+
 	def search
 		@articulo = Articulo.search_stock(params[:interno])
 		@articulo.to_json
@@ -11,7 +27,10 @@ class MovimientoStocksController < ApplicationController
 
   	def create
   		@movimiento_stock = MovimientoStock.new(movimiento_stock_params)
-  		byebug 		
+  		
+  		@movimiento_stock.referencia.nil?
+  			@movimiento_stock.referencia = "sin referencia"
+  			
   		if @movimiento_stock.save
 			respond_to do |format|
 		    format.js

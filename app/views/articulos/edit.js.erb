@@ -8,16 +8,19 @@ $(modalEdit).on('shown.bs.modal', function () {
  $("#articulo_costo").keyup(function() {
 	  $("#articulo_precio").val(
 	  	((
-	  	parseInt($("#articulo_costo").val()) + 
-    	parseInt(($("#articulo_ganancia").val()/100) * $("#articulo_costo").val()
-    	)) * 1.21).toFixed(2)
+	  	parseInt(
+	  		$("#articulo_costo").val()) + 
+    		parseInt(
+    					($("#articulo_ganancia").val()/100) * $("#articulo_costo").val())
+    						) * 1.21).toFixed(2)
 	  	)
 	})
 
   $("#articulo_ganancia").keyup(function() {
    	  $("#articulo_precio").val(	((
 	  	$("#articulo_costo").val() + 
-    	(($("#articulo_ganancia").val()/100) * $("#articulo_costo").val()))
+    		(
+    			($("#articulo_ganancia").val()/100) * $("#articulo_costo").val()))
     	 * 1.21).toFixed(2)
 	  	)
 	})

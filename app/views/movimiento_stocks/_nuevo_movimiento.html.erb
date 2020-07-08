@@ -1,51 +1,54 @@
 <div class="table-stock">
-	<%= nested_form_for @movimiento_stock do |m| %>
-	<div class="form-inline select-procesar-stock" >
-		<%= m.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), {:prompt => 'Seleccione PROVEEDOR'}, 
-			{ :required => true, class: 'form-control form-inline select-stock'} %>
-		<%= m.submit "Procesar entrada", class: 'btn form-inline btn-procesar-stock btn-success procesar-stock btn-lg '%>
-		<%= m.hidden_field :tipoMovimiento, class: "stock-tipo-movimiento"%>
+  <%= nested_form_for @movimiento_stock do |m| %>
+
+  <div class="form-inline select-procesar-stock" >
+    <%= m.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), {:prompt => 'Seleccione PROVEEDOR'}, 
+      { :required => true, class: 'form-control form-inline select-stock'} %>
+    <%= m.text_field :referencia, class: "form-control col-md-3 form-referencia-stock input-stock stock-search-interno", placeholder: "Nª Factura/Referencia"%>
+    <%= m.hidden_field :tipoMovimiento, class: "stock-tipo-movimiento"%>
+      <% case params[:tipoMovimiento] %>
+        <% when "entrada" %>
+          <%= m.submit "Procesar ENTRADA", class: 'btn form-inline btn-procesar-stock btn-nueva-entrada procesar-stock btn-lg '%>
+        <% when "salida" %>
+          <%= m.submit "Procesar SALIDA", class: 'btn form-inline btn-procesar-stock btn-nueva-salida procesar-stock btn-lg '%>
+        <% when "ajuste" %>
+          <%= m.submit "Procesar AJUSTE", class: 'btn form-inline btn-procesar-stock btn-ajuste-stock procesar-stock btn-lg '%>     
+      <%end%>
 </div>
 
 <table class="table table-striped" >
- 	<tr class=>
-		  <th style="width: 5%">Interno</th>
-		  <th style="width: 25%">Codigo</th>
-		  <th style="width: 40%">Descripcion</th>
-		  <th style="width: 24%">Cantidad</th>
-	</tr>
+  <tr class=>
+      <th style="width: 5%">Interno</th>
+      <th style="width: 25%">Codigo</th>
+      <th style="width: 40%">Descripcion</th>
+      <th style="width: 24%">Cantidad</th>
+  </tr>
 </table>
-	<%= m.fields_for :producto_movidos, :wrapper => false do |movido_form| %>
-		<div class="row-stock fields  row-parent">
-			<div class="row-stock col-md-1 row-stock-interno">
-				<%= movido_form.text_field :interno, class: "form-control  input-stock stock-search-interno"%>
-			</div>
-			<div class="row-stock   col-md-3 row-stock-codigo">
-		 		<%= movido_form.text_field :codigo, disabled: true, class: "form-control input-stock-codigo stock-search-codigo" %>
-			</div>
-			<div class="row-stock  col-md-5 row-stock-descripcion">
-				<%= movido_form.text_field :descripcion, disabled: true, class: " form-control input-stock stock-search-descripcion"  %>
-			</div>
-			<div class="row-stock  col-md-1 row-stock-cantidad">
-				<%= movido_form.text_field :cantidad, class: "form-control input-stock"  %>
-			</div>
-			<div class="row-stock  col-md-1 row-boton-borrar">
-				<%= movido_form.link_to_remove "Borrar", class: "btn  btn-borrar-movido btn-danger" %>
-			</div>
-				<%= movido_form.hidden_field :articulo_id, class: "stock-articulo-id" %>
 
-		</div>
-	<% end %>
-			<p> 
-			<%= m.link_to_add "Agregar articulo", :producto_movidos,  class: "btn boton-agregar-articulo btn-modificar" %>
-			</p>
-	<% end %>
+  <%= m.fields_for :producto_movidos, :wrapper => false do |movido_form| %>
+    <div class="row-stock fields row-parent">
+      <div class="row-stock col-md-1 row-stock-interno">
+        <%= movido_form.text_field :interno, required: true, class: "form-control  input-stock stock-search-interno"%>
+      </div>
+      <div class="row-stock   col-md-3 row-stock-codigo">
+        <%= movido_form.text_field :codigo, disabled: true, class: "form-control input-stock-codigo stock-search-codigo" %>
+      </div>
+      <div class="row-stock  col-md-5 row-stock-descripcion">
+        <%= movido_form.text_field :descripcion, disabled: true, class: " form-control input-stock stock-search-descripcion"  %>
+      </div>
+      <div class="row-stock  col-md-1 row-stock-cantidad">
+        <%= movido_form.text_field :cantidad, required: true, class: "form-control input-stock"  %>
+      </div>
+      <div class="row-stock  col-md-1 row-boton-borrar">
+        <%= movido_form.link_to_remove "Borrar", class: "btn  btn-borrar-movido btn-danger" %>
+      </div>
+        <%= movido_form.hidden_field :articulo_id, class: "stock-articulo-id" %>
+    </div>
+  <% end %>
+
+      <p> 
+      <%= m.link_to_add "Agregar articulo", :producto_movidos,  class: "btn boton-agregar-articulo btn-modificar" %>
+      </p>
+
+  <% end %>
 </div> 
-
-
-<script type="text/javascript">
-      // wait for the DOM to be loaded 
-
- 
-
-</script>

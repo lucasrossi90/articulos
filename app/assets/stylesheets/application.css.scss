@@ -45,7 +45,7 @@ th {
 }
 
 .modal-header, .modal-footer {
-  background-color:  #ebebe0;
+  background-color:  lightgrey;
 }
 
 .modal-header {
@@ -308,9 +308,13 @@ a {
   margin-bottom: 10px;
 }
 
+.btn-listados-stock {
+  color:white;
+}
 
 .btn-procesar-stock {
-  margin-left: 505px;
+  margin-left: 120px;
+  color: white;
 }
 
 .row-stock {
@@ -331,3 +335,24 @@ a {
     margin-top: 10px;
 }
 
+.input-articulo-edit {
+  display: inline;
+}
+
+.nota-precio {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.select-articulo-proveedor{
+  margin-left: 10px;
+  padding-right:80px;
+}
+
+textarea.form-control {
+  height: 40px;
+}
+
+.form-referencia-stock {
+  margin-left: 125px;
+}
