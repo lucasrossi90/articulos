@@ -18,18 +18,22 @@
   </div>
 </nav>
 
-<div class="form-group mt-10 row button-stock-row">
+<div class="form-group row button-stock-row">
       <div class="col-md-2">
       </div>
-      <div class="form-group col-md-3">
-        <%= link_to "Movimientos por ARTICULO", movimiento_stocks_listados_path(tipoListado: 'articulo'), remote: true, class: 'btn btn-nueva-entrada btn-lg '%>
+      <div class="form-group col-md-2">
+        <%= link_to "Movimientos por ARTICULO", new_listado_stock_path(tipo_listado: 'articulo'), remote: true, class: 'btn btn-nueva-entrada btn-md '%>
       </div>
-      <div class="form-group col-md-3">
-        <%= link_to "Movimientos por PROVEEDOR", movimiento_stocks_listados_path(tipoListado: 'proveedor'), remote: true, class: 'btn btn-nueva-salida btn-lg '%>
+      <div class="form-group col-md-2">
+         <%= link_to "Movimientos por PROVEEDOR", new_listado_stock_path(tipo_listado: 'proveedor'), remote: true, class: 'btn btn-nueva-salida btn-md'%>
      </div>
-     <div class="form-group col-md-3">
-         <%= link_to "Movimientos por RUBRO", movimiento_stocks_listados_path(tipoListado: 'rubro'), remote: true, class: 'btn btn-ajuste-stock btn-lg'%>
+     <div class="form-group col-md-2">
+         <%= link_to "Movimientos por RUBRO", new_listado_stock_path(tipo_listado: 'rubro'), remote: true, class: 'btn btn-ajuste-stock btn-md'%>
      </div>
+      <div class="form-group col-md-2">
+         <%= link_to "Movimientos por REFERENCIA", new_listado_stock_path(tipo_listado: 'referencia'), remote: true, class: 'btn btn-ajuste-stock btn-md'%>
+     </div>
+
 </div>
 
 <div class="form-target">

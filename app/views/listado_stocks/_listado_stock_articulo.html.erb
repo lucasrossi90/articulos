@@ -1,0 +1,50 @@
+ <div class="table-listado-stock col-md-10">
+  <div class="form-group row-stock-controles-filtrado form-inline">
+       <input class="form-control form-inline col-md-2 search-producto-movido filtro-listado-stock" type="text" placeholder="ingrese INTERNO" id="interno" autocomplete="off">
+       <%= select_tag :tipo_movimiento, raw("<option selected='selected'>Entrada y salida</option>
+             							  <option>solo Entrada</option>
+             							  <option>solo Salida</option>
+             							  <option>solo Ajuste</option>") , class: 'form-inline col-md-2 form-control filtro-listado-stock', :placeholder => "Tipo movimiento" %>
+       <%= select_tag :proveedor, options_from_collection_for_select(@proveedores, :id, :nombre), :placeholder => 'Filtrar por PROVEEDOR', 
+       :required => true, class: 'form-control col-md-2 form-inline select-stock filtro-listado-stock' %>
+       <input class="form-control form-inline col-md-2 search-producto-movido filtro-listado-stock" type="text" placeholder="desde FECHA..." id="fecha_desde" autocomplete="off">
+       <input class="form-control form-inline col-md-2 search-producto-movido filtro-listado-stock" type="text" placeholder="hasta FECHA..." id="fecha_hasta" autocomplete="off">
+       <%= hidden_field :tipo_listado , class: "stock-tipo-listado" %>
+</div>
+
+<table class="table table-striped" >
+ 	<tr class=>
+		  <th style="width: 5%">Interno</th>
+		  <th style="width: 25%">Codigo</th>
+		  <th style="width: 40%">Descripcion</th>
+ 		  <th style="width: 10%">Movimiento</th>
+  		  <th style="width: 10%">Proveedor</th>
+  		  <th style="width: 10%">Referencia</th>
+   		  <th style="width: 10%">Fecha</th>
+		  <th style="width: 10%">Cantidad</th>
+	</tr>
+	<tbody>
+		<div class="table-listado-stock-target"></div>
+	</tbody>
+</table>
+
+</div> 
+
+
+<script type="text/javascript">
+
+     $(".search-producto-movido").change(function() {
+        
+           $.ajax({
+              url: '/movimiento_stocks/nuevo_listado',
+              data: {interno: $("#interno").val(),
+                     tipo_movimiento: $("#tipo_movimiento").val(),
+          					 proveedor: $("#proveedor").val(),
+           					 fecha_desde: $("#fecha_desde").val(),
+           					 fecha_hasta: $("#fecha_hasta").val()
+                     
+                  }
+           });
+       });
+
+</script>

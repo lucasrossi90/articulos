@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 	resources :proveedores
 	resources :movimiento_stocks
 	resources :producto_movidos
+	resources :listado_stocks
 
 	
 

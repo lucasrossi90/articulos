@@ -4,6 +4,36 @@ class MovimientoStock < ApplicationRecord
 	before_save :actualizar_stock
 	accepts_nested_attributes_for :producto_movidos
 
+
+	def self.buscar_prods_interno(interno_input, tipo_movimiento, proveedor, fecha_desde, fecha_hasta)
+	
+		case tipo_movimiento
+			when 'Entrada y salida'
+			prods = ProductoMovido.joins("JOIN movimiento_stocks on movimiento_stocks.id = producto_movidos.movimiento_stock_id").where(
+					"movimiento_stocks.tipo_movimiento = 'entrada' OR movimiento_stocks.tipo_movimiento = 'salida'
+					AND producto_movidos.interno = '#{interno_input}'")
+		end
+
+		byebug
+		if proveedor.present?
+			prods = prods.joins("JOIN movimiento_stocks on movimiento_stocks.id = 
+				producto_movidos.movimiento_stock_id").where("movimiento_stocks.proveedor_id = '#{proveedor}'")
+		end
+		
+		if fecha_desde.present?
+			prods = prods.joins("JOIN movimiento_stocks on movimiento_stocks.id = 
+				producto_movidos.movimiento_stock_id").where("movimiento_stocks.created_date > '#{fecha_desde}'")
+		end
+
+		if fecha_hasta.present?
+			prods = prods.joins("JOIN movimiento_stocks on movimiento_stocks.id = 
+				producto_movidos.movimiento_stock_id").where("movimiento_stocks.created_date > '#{fecha_hasta}'")
+		end
+
+		prods
+	end
+	end
+
 	private
 		def actualizar_stock
 			@productos = self.producto_movidos
@@ -34,5 +64,6 @@ class MovimientoStock < ApplicationRecord
 						@articulo.save
 					end
 			end
-		end
 end
+
+

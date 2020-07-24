@@ -1,0 +1,18 @@
+   <% @productos.each do |producto| %>
+      <tr>
+      <td><%= producto.interno %></td>
+      <td><%= producto.codigo %></td>
+      <td><%= producto.descripcion %></td>
+         <% if producto.movimiento_stock.tipo_movimiento == 'entrada' %>
+            <td style="font-color: green"><%= producto.movimiento_stock.tipo_movimiento %></td>
+         <% elsif producto.movimiento_stock.tipo_movimiento == 'salida' %>
+            <td style="font-color: red"><%= producto.movimiento_stock.tipo_movimiento %></td>
+         <% elsif producto.movimiento_stock.tipo_movimiento == 'ajuste' %>
+            <td style="font-color: blue"><%= producto.movimiento_stock.tipo_movimiento %></td>
+         <%end %>
+      <td><%= producto.movimiento_stock.proveedor %></td>
+      <td><%= producto.movimiento_stock.referencia %></td>
+      <td><%= diaMesAnio(producto.created_at) %></td>
+      <td><%= producto.cantidad%></td>
+      </tr>
+   <% end %>

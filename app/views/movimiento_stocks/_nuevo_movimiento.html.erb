@@ -5,8 +5,8 @@
     <%= m.select :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), {:prompt => 'Seleccione PROVEEDOR'}, 
       { :required => true, class: 'form-control form-inline select-stock'} %>
     <%= m.text_field :referencia, class: "form-control col-md-3 form-referencia-stock input-stock stock-search-interno", placeholder: "Nª Factura/Referencia"%>
-    <%= m.hidden_field :tipoMovimiento, class: "stock-tipo-movimiento"%>
-      <% case params[:tipoMovimiento] %>
+    <%= m.hidden_field :tipo_movimiento, class: "stock-tipo-movimiento"%>
+      <% case params[:tipo_movimiento] %>
         <% when "entrada" %>
           <%= m.submit "Procesar ENTRADA", class: 'btn form-inline btn-procesar-stock btn-nueva-entrada procesar-stock btn-lg '%>
         <% when "salida" %>

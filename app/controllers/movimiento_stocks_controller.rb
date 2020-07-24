@@ -3,22 +3,6 @@ class MovimientoStocksController < ApplicationController
 	def index
 	end
 
-	def listados
-		tipoListado = params[:tipoListado]
-		case tipoListado
-			when "articulo"
-				render "movimiento_stocks/listado_stock_articulo.js.erb"
-		end
-	end
-
-	def nuevo_listado
-		tipoListado = params[:tipoListado]
-		case tipoListado
-			when "articulo"
-				render :partial => "movimiento_stocks/listado_stock_articulo.js"
-		end
-	end
-
 	def search
 		@articulo = Articulo.search_stock(params[:interno])
 		@articulo.to_json
@@ -39,7 +23,7 @@ class MovimientoStocksController < ApplicationController
 	end
 
 	def nuevo_movimiento
-		@movimiento_stock = MovimientoStock.new(tipoMovimiento: params[:tipoMovimiento])
+		@movimiento_stock = MovimientoStock.new(tipo_movimiento: params[:tipo_movimiento])
 		@producto_movido = ProductoMovido.new
    		@proveedores = Proveedor.all.order(:nombre)
    		respond_to :js
@@ -47,7 +31,7 @@ class MovimientoStocksController < ApplicationController
 
    	private
    	def movimiento_stock_params
-   		params.require(:movimiento_stock).permit(:tipoMovimiento, :proveedor_id, 
+   		params.require(:movimiento_stock).permit(:tipo_movimiento, :tipo_listado, :proveedor_id, 
    													producto_movidos_attributes: [:id, :articulo_id,
    													:interno, :descripcion, :cantidad, :codigo, :_destroy])
    	end

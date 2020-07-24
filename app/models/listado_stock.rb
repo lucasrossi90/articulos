@@ -1,0 +1,2 @@
+class ListadoStock < ApplicationRecord
+end

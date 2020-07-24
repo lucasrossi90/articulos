@@ -1,0 +1,2 @@
+module ListadoStocksHelper
+end

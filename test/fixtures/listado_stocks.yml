@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo_movimiento: 
+  proveedor: 
+  fecha_desde: 
+  fecha_hasta: 
+  tipo_listado: 
+  interno: 
+
+two:
+  tipo_movimiento: 
+  proveedor: 
+  fecha_desde: 
+  fecha_hasta: 
+  tipo_listado: 
+  interno: 
