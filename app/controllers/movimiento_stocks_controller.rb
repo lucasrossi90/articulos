@@ -27,11 +27,11 @@ class MovimientoStocksController < ApplicationController
 		@producto_movido = ProductoMovido.new
    		@proveedores = Proveedor.all.order(:nombre)
    		respond_to :js
-   	end
+  end
 
    	private
    	def movimiento_stock_params
-   		params.require(:movimiento_stock).permit(:tipo_movimiento, :tipo_listado, :proveedor_id, 
+   		params.require(:movimiento_stock).permit(:tipo_movimiento, :referencia, :tipo_listado, :proveedor_id, 
    													producto_movidos_attributes: [:id, :articulo_id,
    													:interno, :descripcion, :cantidad, :codigo, :_destroy])
    	end

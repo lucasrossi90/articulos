@@ -1,0 +1,41 @@
+ <div class="table-listado-stock col-md-11">
+
+  <div class="form-group row-stock-controles-filtrado form-inline">
+
+      <%= text_field_tag 'referencia', nil,   :placeholder => "ingrese REFERENCIA" , :class => "form-control form-inline col-md-2 search-producto-movido filtro-referencia-listado-stock" %>
+
+  </div>
+
+<table class="table table-striped" >
+ 	<tr class=>
+		  <th style="width: 5%">Interno</th>
+		  <th style="width: 15%">Codigo</th>
+		  <th style="width: 35%">Descripcion</th>
+ 		  <th style="width: 10%">Tipo</th>
+  		  <th style="width: 15%">Proveedor</th>
+  		  <th style="width: 5%">Ref.</th>
+   		  <th style="width: 25%">Fecha</th>
+		  <th style="width: 10%">Cantidad</th>
+	</tr>
+	<tbody class="table-listado-stock-target">
+	</tbody>
+</table>
+
+</div> 
+
+
+<script type="text/javascript">
+
+     $(".search-producto-movido").
+        change(function() {
+        
+           $.ajax({
+              url: '/listado_stocks/generar_listado',
+              data: {referencia: $(".filtro-referencia-listado-stock").val(),
+                     tipo_listado: $('#listado_stock_tipo_listado').val()
+                     
+                  }
+           });
+       });
+
+</script>

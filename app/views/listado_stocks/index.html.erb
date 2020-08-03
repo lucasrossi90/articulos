@@ -1,5 +1,5 @@
   <nav class="navbar navbar navbar-dark bg-dark">    
-          <a class='index-link inicio-nav' href="/stock">Stock</a>
+          <a class='index-link inicio-nav' href="/movimiento_stocks">Stock</a>
           <a class='index-link inicio-nav' href="/articulos">Articulos</a>
           <a class='index-link inicio-nav' href="/rubros">Rubros</a>
           <a class='index-link inicio-nav' href="/proveedores">Proveedores</a>
@@ -31,7 +31,7 @@
          <%= link_to "Movimientos por RUBRO", new_listado_stock_path(tipo_listado: 'rubro'), remote: true, class: 'btn btn-ajuste-stock btn-md'%>
      </div>
       <div class="form-group col-md-2">
-         <%= link_to "Movimientos por REFERENCIA", new_listado_stock_path(tipo_listado: 'referencia'), remote: true, class: 'btn btn-ajuste-stock btn-md'%>
+         <%= link_to "Movimientos por REFERENCIA", new_listado_stock_path(tipo_listado: 'referencia'), remote: true, class: 'btn btn-nueva-busqueda btn-md'%>
      </div>
 
 </div>

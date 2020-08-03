@@ -1,0 +1,12 @@
+
+<% case tipo %>
+	<% when 'articulo' %>
+		$(".form-target").html('<%= j render "listado_stock_articulo" %>');
+	<% when 'proveedor' %>
+		$(".form-target").html('<%= j render "listado_stock_proveedor" %>');
+	<% when 'rubro' %>
+		$(".form-target").html('<%= j render "listado_stock_rubro" %>');
+	<% when 'referencia' %>
+		$(".form-target").html('<%= j render "listado_stock_referencia" %>');
+<% end %>
+

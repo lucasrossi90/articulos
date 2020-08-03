@@ -96,6 +96,10 @@ li a {
 
 .btn-nueva-salida, .btn-modificar{
   background-color: #354e85;
+   white-space:normal;
+    word-wrap: break-word;
+    word-break: normal;
+
 }
 
 .btn-nueva-salida:hover, .btn-modificar:hover {
@@ -190,8 +194,9 @@ a {
     border-color: #006644;
 }
 
-
-
+.search-producto-movido {
+  margin-left: 15px;
+}
 
 
 .btn-volver:hover{
@@ -371,6 +376,3 @@ textarea.form-control {
   margin-left: 125px;
 }
 
-.filtro-listado-stock {
-  margin-left:20px;
-}

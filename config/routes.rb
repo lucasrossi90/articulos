@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 	get 'movimiento_stocks/search', to: 'movimiento_stocks#search'
 	get 'movimiento_stocks/listados', to: 'movimiento_stocks#listados'
 	get 'movimiento_stocks/nuevo_listado', to: 'movimiento_stocks#nuevo_listado'
+	get 'listado_stocks/generar_listado', to: 'listado_stocks#generar_listado'
 
 	post 'movimiento_stocks/procesar_entrada', to: 'movimiento_stocks#procesar_entrada'
 	post 'rubros/update_fecha_rubro', to: 'rubros#update_fecha_rubro'

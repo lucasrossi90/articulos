@@ -2,21 +2,23 @@
 
   <div class="form-group row-stock-controles-filtrado form-inline">
 
-      <%= text_field_tag 'interno', nil,  class: "form-control form-inline col-md-2 search-producto-movido filtro-interno-listado-stock", :placeholder => "ingrese INTERNO"   %>
-    
+      <%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre), 
+        :include_blank => 'Filtrar por RUBRO' , 
+        class: 'form-control col-md-2 search-producto-movido form-inline select-stock filtro-rubro-listado-stock'%>
+
       <%= select_tag :tipo_movimiento, raw("<option selected='selected'>Entrada y salida</option>
              							  <option>solo Entrada</option>
              							  <option>solo Salida</option>
              							  <option>solo Ajuste</option>") , 
-                             :include_blank => "Tipo movimiento"  , class: 'form-inline col-md-2 form-control search-producto-movido filtro-movimiento-listado-stock'%>
+                            :placeholder => "Tipo movimiento" , class: 'form-inline col-md-2 form-control search-producto-movido filtro-movimiento-listado-stock'%>
 
        <%= select_tag :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), 
-       :include_blank => 'Filtrar por PROVEEDOR' , 
+        :placeholder => 'Filtrar por PROVEEDOR' , 
         class: 'form-control col-md-2 search-producto-movido form-inline select-stock filtro-proveedor-listado-stock' %>
        
-      <%= text_field_tag 'fecha_desde', nil,  :class => "form-control form-inline col-md-2 search-producto-movido filtro-fechadesde-listado-stock", :placeholder => "desde FECHA..."  %>
+      <%= text_field :fecha_desde,  nil, :class => "form-control form-inline col-md-2 search-producto-movido filtro-fechadesde-listado-stock", :placeholder => "desde FECHA...", :id => "fecha_desde"   %>
 
-      <%= text_field 'fecha_hasta', nil,  :class => "form-control form-inline col-md-2 search-producto-movido filtro-fechahasta-listado-stock", :placeholder => "HASTA fecha..."   %>
+      <%= text_field :fecha_hasta,  nil, :class => "form-control form-inline col-md-2 search-producto-movido filtro-fechahasta-listado-stock", :placeholder => "HASTA fecha...", :id => "fecha_hasta"   %>
  
       <%= hidden_field :tipo_listado , class: "stock-tipo-listado" %>
 
@@ -47,11 +49,11 @@
         
            $.ajax({
               url: '/listado_stocks/generar_listado',
-              data: {interno: $(".filtro-interno-listado-stock").val(),
-                     tipo_movimiento: $(".filtro-movimiento-listado-stock").val(),
+              data: {tipo_movimiento: $(".filtro-movimiento-listado-stock").val(),
           					 proveedor_id: $(".filtro-proveedor-listado-stock").val(),
            					 fecha_desde: $(".filtro-fechadesde-listado-stock").val(),
            					 fecha_hasta: $(".filtro-fechahasta-listado-stock").val(),
+                     rubro: $(".filtro-rubro-listado-stock").val(),
                      tipo_listado: $('.stock-tipo-listado').val()
                      
                   }
@@ -59,5 +61,3 @@
        });
 
 </script>
-
-

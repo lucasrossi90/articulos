@@ -1,0 +1,60 @@
+ <div class="table-listado-stock col-md-11">
+  <div class="form-group row-stock-controles-filtrado form-inline">
+
+      <%= select_tag :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), 
+        :include_blank => 'Filtrar por PROVEEDOR', 
+        class: 'form-control col-md-3 search-producto-movido form-inline select-stock filtro-proveedor-listado-stock' %>
+
+      <%= select_tag :tipo_movimiento, raw("<option selected='selected'>Entrada y salida</option>
+             							  <option>solo Entrada</option>
+             							  <option>solo Salida</option>
+             							  <option>solo Ajuste</option>") , 
+                            :include_blank => "Tipo movimiento"  , class: 'form-inline col-md-2 form-control search-producto-movido filtro-movimiento-listado-stock'%>
+
+       <%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre), 
+        :include_blank => 'Filtrar por RUBRO' , 
+        class: 'form-control col-md-2 search-producto-movido form-inline select-stock filtro-rubro-listado-stock'%>
+       
+      <%= text_field_tag 'fecha_desde', nil, placeholder: "desde FECHA...",  class: "form-control form-inline col-md-2 search-producto-movido filtro-fechadesde-listado-stock"  %>
+
+      <%= text_field 'fecha_hasta', nil, placeholder: "HASTA fecha...",  class: "form-control form-inline col-md-2 search-producto-movido filtro-fechahasta-listado-stock"  %>
+
+      <%= hidden_field :tipo_listado , class: "stock-tipo-listado" %>
+
+  </div>
+
+<table class="table table-striped" >
+ 	<tr class=>
+		  <th style="width: 5%">Interno</th>
+		  <th style="width: 15%">Codigo</th>
+		  <th style="width: 35%">Descripcion</th>
+ 		  <th style="width: 10%">Tipo</th>
+  		  <th style="width: 15%">Proveedor</th>
+  		  <th style="width: 5%">Ref.</th>
+   		  <th style="width: 25%">Fecha</th>
+		  <th style="width: 10%">Cantidad</th>
+	</tr>
+	<tbody class="table-listado-stock-target">
+	</tbody>
+</table>
+
+</div> 
+
+
+<script type="text/javascript">
+
+     $(".search-producto-movido").change(function() {
+        
+           $.ajax({
+              url: '/listado_stocks/generar_listado',
+              data: {tipo_movimiento: $(".filtro-movimiento-listado-stock").val(),
+          					 proveedor_id: $(".filtro-proveedor-listado-stock").val(),
+           					 fecha_desde: $(".filtro-fechadesde-listado-stock").val(),
+           					 fecha_hasta: $(".filtro-fechahasta-listado-stock").val(),
+                     rubro: $(".filtro-rubro-listado-stock").val(),
+                     tipo_listado: $('#listado_stock_tipo_listado').val()                     
+                  }
+           });
+       });
+
+</script>

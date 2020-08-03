@@ -5,40 +5,63 @@ class MovimientoStock < ApplicationRecord
 	accepts_nested_attributes_for :producto_movidos
 
 
-	def self.buscar_prods_interno(interno_input, tipo_movimiento, proveedor, fecha_desde, fecha_hasta)
+	def self.buscar_prods(interno_input, tipo_movimiento, proveedor, fecha_desde, fecha_hasta, rubro, referencia)
 	
 		case tipo_movimiento
 			when 'Entrada y salida'
-			prods = ProductoMovido.joins("JOIN movimiento_stocks on movimiento_stocks.id = producto_movidos.movimiento_stock_id").where(
-					"movimiento_stocks.tipo_movimiento = 'entrada' OR movimiento_stocks.tipo_movimiento = 'salida'
-					AND producto_movidos.interno = '#{interno_input}'")
+			prods = ProductoMovido.joins("JOIN movimiento_stocks on movimiento_stocks.id = producto_movidos.movimiento_stock_id").
+					where("(movimiento_stocks.tipo_movimiento = 'entrada' OR movimiento_stocks.tipo_movimiento = 'salida')")
+			
+			when 'solo Entrada'
+			prods = ProductoMovido.joins("JOIN movimiento_stocks on movimiento_stocks.id = producto_movidos.movimiento_stock_id").
+			where("movimiento_stocks.tipo_movimiento = 'entrada'")
+
+			when 'solo Salida'
+			prods = ProductoMovido.joins("JOIN movimiento_stocks on movimiento_stocks.id = producto_movidos.movimiento_stock_id").
+			where("movimiento_stocks.tipo_movimiento = 'salida'")
+
+			when 'solo Ajuste'
+			prods = ProductoMovido.joins("JOIN movimiento_stocks on movimiento_stocks.id = producto_movidos.movimiento_stock_id").
+			where("movimiento_stocks.tipo_movimiento = 'ajuste'")
+
 		end
 
-		byebug
+		if interno_input.present?
+			prods = prods.where("interno = '#{interno_input}'")
+		end
+		
 		if proveedor.present?
-			prods = prods.joins("JOIN movimiento_stocks on movimiento_stocks.id = 
-				producto_movidos.movimiento_stock_id").where("movimiento_stocks.proveedor_id = '#{proveedor}'")
+			prods = prods.joins("JOIN movimiento_stocks on movimiento_stocks.id = producto_movidos.movimiento_stock_id").
+			where("movimiento_stocks.proveedor_id = #{proveedor}")
 		end
 		
 		if fecha_desde.present?
-			prods = prods.joins("JOIN movimiento_stocks on movimiento_stocks.id = 
-				producto_movidos.movimiento_stock_id").where("movimiento_stocks.created_date > '#{fecha_desde}'")
+			prods = prods.where("producto_movidos.created_at > '#{fecha_desde}'")
 		end
 
 		if fecha_hasta.present?
-			prods = prods.joins("JOIN movimiento_stocks on movimiento_stocks.id = 
-				producto_movidos.movimiento_stock_id").where("movimiento_stocks.created_date > '#{fecha_hasta}'")
+			prods = prods.where("producto_movidos.created_at < '#{fecha_hasta}'")
 		end
 
-		prods
-	end
-	end
+		if rubro.present?
+			prods = prods.joins("JOIN articulos on producto_movidos.articulo_id = articulos.id").
+			where("articulos.rubro_id = #{rubro}")
+		end
 
-	private
+		if referencia.present?
+			prods = prods.joins("JOIN movimiento_stocks on movimiento_stocks.id = producto_movidos.movimiento_stock_id").
+			where("movimiento_stocks.referencia = #{referencia}")
+		end
+
+		prods.order(created_at: :desc)
+	end
+	
+
+		private
 		def actualizar_stock
 			@productos = self.producto_movidos
 			
-			case self.tipoMovimiento
+			case self.tipo_movimiento
 				when "entrada"
 					@productos.each do |prod|
 						prod_id = prod.articulo_id
@@ -64,6 +87,7 @@ class MovimientoStock < ApplicationRecord
 						@articulo.save
 					end
 			end
-end
+	end
 
+end
 

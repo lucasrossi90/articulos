@@ -3,14 +3,16 @@
       <td><%= producto.interno %></td>
       <td><%= producto.codigo %></td>
       <td><%= producto.descripcion %></td>
-         <% if producto.movimiento_stock.tipo_movimiento == 'entrada' %>
-            <td style="font-color: green"><%= producto.movimiento_stock.tipo_movimiento %></td>
-         <% elsif producto.movimiento_stock.tipo_movimiento == 'salida' %>
-            <td style="font-color: red"><%= producto.movimiento_stock.tipo_movimiento %></td>
-         <% elsif producto.movimiento_stock.tipo_movimiento == 'ajuste' %>
-            <td style="font-color: blue"><%= producto.movimiento_stock.tipo_movimiento %></td>
-         <%end %>
-      <td><%= producto.movimiento_stock.proveedor %></td>
+
+      <% if producto.movimiento_stock.tipo_movimiento == 'entrada' %>
+         <td style="color: green; font-weight: bold">ENT.</td>
+      <% elsif producto.movimiento_stock.tipo_movimiento == 'salida' %>
+         <td style="color: red; font-weight: bold">SAL.</td>
+      <% elsif producto.movimiento_stock.tipo_movimiento == 'ajuste' %>
+         <td style="color: blue; font-weight: bold">AJU.</td>
+      <%end %>
+
+      <td><%= producto.movimiento_stock.proveedor.nombre %></td>
       <td><%= producto.movimiento_stock.referencia %></td>
       <td><%= diaMesAnio(producto.created_at) %></td>
       <td><%= producto.cantidad%></td>
