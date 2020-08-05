@@ -12,8 +12,9 @@ class MovimientoStocksController < ApplicationController
   	def create
   		@movimiento_stock = MovimientoStock.new(movimiento_stock_params)
   		
-  		@movimiento_stock.referencia.nil?
+  		if @movimiento_stock.referencia.nil?
   			@movimiento_stock.referencia = "sin referencia"
+      end
   			
   		if @movimiento_stock.save
 			respond_to do |format|

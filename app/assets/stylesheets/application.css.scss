@@ -75,13 +75,13 @@ th {
 span {
 	color:white;
 }
+
 li {
   float: left;
 }
 
 li a {
   display: block;
-  color: white;
   text-align: center;
   padding: 10px 10px;
   text-decoration: none;
@@ -142,14 +142,14 @@ a {
 }
 
 .btn-mas-herramientas:hover {
-    background-color: green !important;
-    border-color: green !important;
+    background-color: lightgrey;
+    border-color: lightgrey;
     color: white;
 }
 
 .btn-mas-herramientas {
-    background-color:  #006644;
-    border-color:  #006644;
+    background-color:  grey;
+    border-color:  grey;
     color:white;
 }
 
@@ -171,13 +171,14 @@ a {
     display: block;
     height: 38px;
     padding: 6px 25px;
-    background-color:  #006644;
+    background-color:  grey;
 }
 
 .inicio-nav:hover {
-  background-color: green;
-    border-color: green;
-    color:white;
+  background-color: lightgrey;
+    border-color: lightgrey;
+    text-decoration: none;
+    color: black;
 }
 
 .btn-nueva-busqueda:hover {
@@ -249,10 +250,16 @@ a {
     color:white;
 }
 
+a.dropdown-item:hover {
+   text-decoration: bold;
+   font-style: italic;
+   font-weight: 500;
+
+}
+
 .dropdown-item:hover {
-     background-color: #4F957E !important;
-    border-color: #4F957E !important;
-    color: white;
+  //  text-decoration: bold;
+  //  color: black;
 }
 
 .row-stock-controles-filtrado {
@@ -308,6 +315,7 @@ a {
     background-color: #8D6188;
     border-color: #8D6188;
     outline: none;
+    display: table-cell;
 }
 
 #fecha_update {

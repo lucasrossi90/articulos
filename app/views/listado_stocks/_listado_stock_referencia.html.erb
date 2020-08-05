@@ -4,6 +4,14 @@
 
       <%= text_field_tag 'referencia', nil,   :placeholder => "ingrese REFERENCIA" , :class => "form-control form-inline col-md-2 search-producto-movido filtro-referencia-listado-stock" %>
 
+      <%= select_tag :tipo_movimiento, raw("<option selected='selected'>TODOS los movimientos</option>
+                    <option>Entrada y salida</option>
+                    <option>solo Entrada</option>
+                    <option>solo Salida</option>
+                    <option>solo Ajuste</option>") , 
+                    :placeholder => "Tipo movimiento" , class: 'form-inline col-md-3 form-control search-producto-movido filtro-movimiento-listado-stock'%>
+
+
   </div>
 
 <table class="table table-striped" >
@@ -32,6 +40,7 @@
            $.ajax({
               url: '/listado_stocks/generar_listado',
               data: {referencia: $(".filtro-referencia-listado-stock").val(),
+                     tipo_movimiento: $(".filtro-movimiento-listado-stock").val(),
                      tipo_listado: $('#listado_stock_tipo_listado').val()
                      
                   }

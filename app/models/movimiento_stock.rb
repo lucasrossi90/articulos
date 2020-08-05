@@ -24,6 +24,9 @@ class MovimientoStock < ApplicationRecord
 			prods = ProductoMovido.joins("JOIN movimiento_stocks on movimiento_stocks.id = producto_movidos.movimiento_stock_id").
 			where("movimiento_stocks.tipo_movimiento = 'ajuste'")
 
+			else
+			prods = ProductoMovido.all
+
 		end
 
 		if interno_input.present?

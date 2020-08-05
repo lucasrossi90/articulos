@@ -6,11 +6,12 @@
         :include_blank => 'Filtrar por RUBRO' , 
         class: 'form-control col-md-2 search-producto-movido form-inline select-stock filtro-rubro-listado-stock'%>
 
-      <%= select_tag :tipo_movimiento, raw("<option selected='selected'>Entrada y salida</option>
-             							  <option>solo Entrada</option>
-             							  <option>solo Salida</option>
-             							  <option>solo Ajuste</option>") , 
-                            :placeholder => "Tipo movimiento" , class: 'form-inline col-md-2 form-control search-producto-movido filtro-movimiento-listado-stock'%>
+      <%= select_tag :tipo_movimiento, raw("<option selected='selected'>TODOS los movimientos</option>
+                                            <option>ENTRADA y SALIDA</option>
+                             							  <option>solo ENTRADA</option>
+                             							  <option>solo SALIDA</option>
+                             							  <option>solo AJUSTE</option>") , 
+                                            :placeholder => "Tipo movimiento" , class: 'form-inline col-md-2 form-control search-producto-movido filtro-movimiento-listado-stock'%>
 
        <%= select_tag :proveedor_id, options_from_collection_for_select(@proveedores, :id, :nombre), 
         :placeholder => 'Filtrar por PROVEEDOR' , 

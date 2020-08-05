@@ -32,6 +32,8 @@ gem 'nested_form', github: 'ryanb/nested_form'
 
 
 gem 'bootstrap', '~> 4.1.3'
+gem 'material-sass', '4.1.1'
+
 gem 'jquery-rails'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby

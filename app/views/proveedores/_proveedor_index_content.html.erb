@@ -3,7 +3,9 @@
         <td><%= proveedor.id %></td>
         <td><%= proveedor.nombre %></td>
         <td>
-        <%= link_to "Modificar", edit_proveedore_path(proveedor), remote: true, class: 'btn btn-modificar btn-sm'%>
+        <%= link_to "Editar", edit_proveedore_path(proveedor), remote: true, class: 'btn btn-modificar btn-sm'%>
+        <%= link_to "Eliminar", edit_proveedore_path(proveedor), remote: true, class: 'btn btn-eliminar btn-danger btn-sm'%>
+
         </td>
       </tr>
       <% end %>

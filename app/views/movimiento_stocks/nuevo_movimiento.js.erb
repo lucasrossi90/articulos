@@ -40,7 +40,7 @@ $(document).ready(function() {
 	 var options = { 
         url:'/movimiento_stocks/procesar_entrada',
         data: {proveedor_id: $('#movimiento_stock_proveedor').val(),
-        	   tipoMovimiento: 'entrada' }
+        	   referencia: $("#movimiento_stock_referencia").val()}
         }
 // bind 'myForm' and provide a simple callback function 
 	$('#new_movimiento_stock').ajaxForm(function(options) {

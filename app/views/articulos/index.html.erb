@@ -12,6 +12,8 @@
     <a class="dropdown-item" href="/rubros">Gestión de RUBROS</a>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="/proveedores">Gestión de PROVEEDORES</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/movimiento_stocks">Gestión de STOCK</a>
   </div>
 </div>
 
@@ -31,11 +33,12 @@
      <div class="col-md-2">
              <%= select_tag :rubro, options_from_collection_for_select(@rubros, :id, :nombre), include_blank: '...por RUBRO', class: 'form-control search_rubro' %>
      </div>
-      <div class="form-group col-md-1">
-      <%= button_to "Nueva búsqueda", '/articulos', :method => :get, :class => "btn btn-nueva-busqueda btn-sm btn-success" %>
-     </div>
+
      <div class="form-group col-md-1">
-      <%= link_to "Nuevo articulo", new_articulo_path, remote: true, class: 'btn btn-newarticulo btn-sm btn-success'%>
+      <%= link_to "Nuevo articulo", new_articulo_path, remote: true, class: 'btn btn-nueva-busqueda btn-md btn-success'%>
+     </div>
+      <div class="form-group col-md-1">
+      <%= button_to "Nueva búsqueda", '/articulos', :method => :get, :class => "btn btn-newarticulo btn-sm btn-success" %>
      </div>
 </div>
 <div class="form-group mt-0 mb-0 row checkRow">

@@ -8,11 +8,11 @@
     <%= m.hidden_field :tipo_movimiento, class: "stock-tipo-movimiento"%>
       <% case params[:tipo_movimiento] %>
         <% when "entrada" %>
-          <%= m.submit "Procesar ENTRADA", class: 'btn form-inline btn-procesar-stock btn-nueva-entrada procesar-stock btn-lg '%>
+          <%= m.submit "Procesar ENTRADA", class: 'btn form-inline btn-procesar-stock btn-nueva-busqueda procesar-stock btn-lg '%>
         <% when "salida" %>
-          <%= m.submit "Procesar SALIDA", class: 'btn form-inline btn-procesar-stock btn-nueva-salida procesar-stock btn-lg '%>
+          <%= m.submit "Procesar SALIDA", class: 'btn form-inline btn-procesar-stock btn-danger procesar-stock btn-lg '%>
         <% when "ajuste" %>
-          <%= m.submit "Procesar AJUSTE", class: 'btn form-inline btn-procesar-stock btn-ajuste-stock procesar-stock btn-lg '%>     
+          <%= m.submit "Procesar AJUSTE", class: 'btn form-inline btn-procesar-stock btn-modificar procesar-stock btn-lg '%>     
       <%end%>
 </div>
 

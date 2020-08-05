@@ -2,7 +2,7 @@
       <a class='index-link inicio-nav' href="/rubros">Rubros</a>
       <a class='index-link inicio-nav' href="/articulos">Articulos</a>
       <a class='index-link inicio-nav' href="/proveedores">Proveedores</a>
-      <a class='index-link inicio-nav' href="/movimientos_stocks">Stock</a>
+      <a class='index-link inicio-nav' href="/movimiento_stocks">Stock</a>
   </ol>
 
   <div class="btn-group">
@@ -12,6 +12,8 @@
       <a class="dropdown-item" href="/articulos">Gestión de ARTICULOS</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="/proveedores">Gestión de PROVEEDORES</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="/movimientos_stocks">Gestión de STOCK</a>
     </div>
   </div>
 </nav>
@@ -26,13 +28,13 @@
         <%= link_to "Nuevo rubro", new_rubro_path, remote: true, class: 'btn btn-nueva-busqueda btn-sm btn-success'%>
       </div>
       <div class="form-group col-md-2">
-        <%= link_to "Remarcar fecha de un RUBRO", '/rubros/edit_fecha_rubro', remote: true, class: 'btn btn-newarticulo btn-sm btn-success'%>
+        <%= link_to "Remarcar fecha de un RUBRO", '/rubros/edit_fecha_rubro', remote: true, class: 'btn btn-modificar btn-sm '%>
      </div>
      <div class="form-group col-md-2">
-         <%= link_to "Remarcar precio de un RUBRO", '/rubros/edit_precio_rubro', remote: true, class: 'btn btn-newarticulo btn-sm '%>
+         <%= link_to "Remarcar precio de un RUBRO", '/rubros/edit_precio_rubro', remote: true, class: 'btn btn-modificar btn-sm '%>
      </div>
      <div class="form-group col-md-2">
-         <%= link_to "Ver articulos de un RUBRO", '/rubros/rubro_articulos', class: 'btn btn-ver-rubro btn-sm '%>
+         <%= link_to "Ver articulos de un RUBRO", '/rubros/rubro_articulos', class: 'btn btn-modificar btn-sm '%>
      </div>
 </div>
 
